@@ -38,6 +38,10 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-brand-red: #a70000;
+  --color-brand-orange: #c34600;
+  --color-brand-pink: #ffced4;
+  --color-brand-gray: #666666;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
