@@ -1,0 +1,282 @@
+[
+  {
+    "category": "Cake",
+    "items": [
+      {
+        "name": "Chocolate Fudge Cake",
+        "amount": 550,
+        "imageUrl": "https://images.unsplash.com/photo-1601979039581-25d2b1a8d2e5"
+      },
+      {
+        "name": "Vanilla Layer Cake",
+        "amount": 500,
+        "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93"
+      },
+      {
+        "name": "Red Velvet Cake",
+        "amount": 600,
+        "imageUrl": "https://images.unsplash.com/photo-1601979039751-0d64fefb0816"
+      },
+      {
+        "name": "Black Forest Cake",
+        "amount": 580,
+        "imageUrl": "https://images.unsplash.com/photo-1551024506-0bccd828d307"
+      },
+      {
+        "name": "Strawberry Shortcake",
+        "amount": 520,
+        "imageUrl": "https://images.unsplash.com/photo-1578985545062-69928b1d9587"
+      },
+      {
+        "name": "Carrot Cake",
+        "amount": 530,
+        "imageUrl": "https://images.unsplash.com/photo-1605478059386-6b4e7f82d5b1"
+      }
+    ]
+  },
+  {
+    "category": "Cupcakes",
+    "items": [
+      {
+        "name": "Chocolate Cupcake",
+        "amount": 50,
+        "imageUrl": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092"
+      },
+      {
+        "name": "Vanilla Cupcake",
+        "amount": 45,
+        "imageUrl": "https://images.unsplash.com/photo-1550317138-10000687a72b"
+      },
+      {
+        "name": "Red Velvet Cupcake",
+        "amount": 55,
+        "imageUrl": "https://images.unsplash.com/photo-1617196039999-7a4b49c4dbdb"
+      },
+      {
+        "name": "Lemon Cupcake",
+        "amount": 48,
+        "imageUrl": "https://images.unsplash.com/photo-1608757323305-bbc9d8c7eb93"
+      },
+      {
+        "name": "Strawberry Cupcake",
+        "amount": 52,
+        "imageUrl": "https://images.unsplash.com/photo-1617196039208-8b71b5e0179b"
+      },
+      {
+        "name": "Cookies & Cream Cupcake",
+        "amount": 58,
+        "imageUrl": "https://images.unsplash.com/photo-1599785209707-8f50fda16c59"
+      }
+    ]
+  },
+  {
+    "category": "Brownies",
+    "items": [
+      {
+        "name": "Classic Fudge Brownie",
+        "amount": 40,
+        "imageUrl": "https://images.unsplash.com/photo-1617191513904-50f06de46f4c"
+      },
+      {
+        "name": "Walnut Brownie",
+        "amount": 45,
+        "imageUrl": "https://images.unsplash.com/photo-1617191513653-942ea20e0f86"
+      },
+      {
+        "name": "Cheesecake Brownie",
+        "amount": 50,
+        "imageUrl": "https://images.unsplash.com/photo-1617191513722-9d10c78e6f12"
+      },
+      {
+        "name": "Peanut Butter Brownie",
+        "amount": 48,
+        "imageUrl": "https://images.unsplash.com/photo-1620912189463-6b7323beea66"
+      },
+      {
+        "name": "Salted Caramel Brownie",
+        "amount": 52,
+        "imageUrl": "https://images.unsplash.com/photo-1617191513702-7b5195d3f6ce"
+      },
+      {
+        "name": "Espresso Brownie",
+        "amount": 55,
+        "imageUrl": "https://images.unsplash.com/photo-1605478101683-3f6cfc6d8e9d"
+      }
+    ]
+  },
+  {
+    "category": "Cookies",
+    "items": [
+      {
+        "name": "Chocolate Chip Cookie",
+        "amount": 25,
+        "imageUrl": "https://images.unsplash.com/photo-1600891964458-3fbc1b04e1f8"
+      },
+      {
+        "name": "Oatmeal Raisin Cookie",
+        "amount": 22,
+        "imageUrl": "https://images.unsplash.com/photo-1620912189487-c1a53aa43c58"
+      },
+      {
+        "name": "Peanut Butter Cookie",
+        "amount": 24,
+        "imageUrl": "https://images.unsplash.com/photo-1601979039585-3ac77c2b4a02"
+      },
+      {
+        "name": "Sugar Cookie",
+        "amount": 20,
+        "imageUrl": "https://images.unsplash.com/photo-1617196039958-6c47694a48f2"
+      },
+      {
+        "name": "Snickerdoodle",
+        "amount": 23,
+        "imageUrl": "https://images.unsplash.com/photo-1620912189365-07b672ff29d1"
+      },
+      {
+        "name": "Double Chocolate Cookie",
+        "amount": 26,
+        "imageUrl": "https://images.unsplash.com/photo-1617196040004-49963cf34310"
+      }
+    ]
+  },
+  {
+    "category": "Muffins",
+    "items": [
+      {
+        "name": "Blueberry Muffin",
+        "amount": 45,
+        "imageUrl": "https://images.unsplash.com/photo-1589983846997-0dacf3c46b06"
+      },
+      {
+        "name": "Chocolate Chip Muffin",
+        "amount": 48,
+        "imageUrl": "https://images.unsplash.com/photo-1617196040504-323aa7cb6b29"
+      },
+      {
+        "name": "Banana Nut Muffin",
+        "amount": 42,
+        "imageUrl": "https://images.unsplash.com/photo-1599785209942-c3125b81eb19"
+      },
+      {
+        "name": "Lemon Poppy Seed Muffin",
+        "amount": 44,
+        "imageUrl": "https://images.unsplash.com/photo-1617196040668-51e0848cdbb8"
+      },
+      {
+        "name": "Pumpkin Muffin",
+        "amount": 46,
+        "imageUrl": "https://images.unsplash.com/photo-1617196040702-9c8b35290259"
+      },
+      {
+        "name": "Cranberry Orange Muffin",
+        "amount": 47,
+        "imageUrl": "https://images.unsplash.com/photo-1617196040908-19df1a2e0cf6"
+      }
+    ]
+  },
+  {
+    "category": "Banana Loaf",
+    "items": [
+      {
+        "name": "Classic Banana Loaf",
+        "amount": 120,
+        "imageUrl": "https://images.unsplash.com/photo-1589308078059-f1e84b0435a7"
+      },
+      {
+        "name": "Chocolate Chip Banana Loaf",
+        "amount": 130,
+        "imageUrl": "https://images.unsplash.com/photo-1620912190256-ccaa716c2a24"
+      },
+      {
+        "name": "Walnut Banana Loaf",
+        "amount": 135,
+        "imageUrl": "https://images.unsplash.com/photo-1589308078557-4e254bc38fa1"
+      },
+      {
+        "name": "Cinnamon Swirl Banana Loaf",
+        "amount": 125,
+        "imageUrl": "https://images.unsplash.com/photo-1605478059354-cb3b96d1e7f3"
+      },
+      {
+        "name": "Peanut Butter Banana Loaf",
+        "amount": 140,
+        "imageUrl": "https://images.unsplash.com/photo-1599785209965-3db5a50b7fb8"
+      },
+      {
+        "name": "Double Chocolate Banana Loaf",
+        "amount": 145,
+        "imageUrl": "https://images.unsplash.com/photo-1620912189430-124ed5bdee74"
+      }
+    ]
+  },
+  {
+    "category": "Krinkles",
+    "items": [
+      {
+        "name": "Chocolate Krinkle",
+        "amount": 20,
+        "imageUrl": "https://images.unsplash.com/photo-1605478059277-192d08f1cf7b"
+      },
+      {
+        "name": "Red Velvet Krinkle",
+        "amount": 22,
+        "imageUrl": "https://images.unsplash.com/photo-1620912189498-bfbf2296df25"
+      },
+      {
+        "name": "Matcha Krinkle",
+        "amount": 24,
+        "imageUrl": "https://images.unsplash.com/photo-1605478059320-9eebf5b1b0c5"
+      },
+      {
+        "name": "Peanut Butter Krinkle",
+        "amount": 23,
+        "imageUrl": "https://images.unsplash.com/photo-1617196040500-cc17aee836c0"
+      },
+      {
+        "name": "Lemon Krinkle",
+        "amount": 21,
+        "imageUrl": "https://images.unsplash.com/photo-1617196040833-cf6db9eddbf8"
+      },
+      {
+        "name": "Espresso Krinkle",
+        "amount": 25,
+        "imageUrl": "https://images.unsplash.com/photo-1605478059401-651e6c77e46c"
+      }
+    ]
+  },
+  {
+    "category": "Dessert Bars",
+    "items": [
+      {
+        "name": "Lemon Bar",
+        "amount": 35,
+        "imageUrl": "https://images.unsplash.com/photo-1605478059459-8a324a94a5b3"
+      },
+      {
+        "name": "Chocolate Bar",
+        "amount": 38,
+        "imageUrl": "https://images.unsplash.com/photo-1617196040793-b02c66b14b1e"
+      },
+      {
+        "name": "Peanut Butter Bar",
+        "amount": 40,
+        "imageUrl": "https://images.unsplash.com/photo-1620912189522-5da343c1e8fb"
+      },
+      {
+        "name": "Coconut Bar",
+        "amount": 36,
+        "imageUrl": "https://images.unsplash.com/photo-1605478059503-2ad8d81b95cc"
+      },
+      {
+        "name": "S'mores Bar",
+        "amount": 42,
+        "imageUrl": "https://images.unsplash.com/photo-1599785209994-0c54e217c6eb"
+      },
+      {
+        "name": "Caramel Bar",
+        "amount": 39,
+        "imageUrl": "https://images.unsplash.com/photo-1617196040707-3b26976c65c2"
+      }
+    ]
+  }
+]
