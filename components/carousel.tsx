@@ -4,6 +4,7 @@ import "react-multi-carousel/lib/styles.css";
 import Image from "next/image";
 import Hero1 from "@/public/hero.png";
 import { Button } from "./ui/button";
+import { ChevronLeft, ChevronLeftCircle, ChevronRight } from "lucide-react";
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -24,6 +25,16 @@ const responsive = {
   },
 };
 
+const CustomDot = ({ onClick, active }: any) => {
+  return (
+    <button
+      onClick={onClick}
+      className={`w-3 h-3 mx-1 rounded-full transition-all duration-300 
+        ${active ? "bg-[#df889c]" : "bg-gray-400 hover:bg-brand-pink"}`}
+    />
+  );
+};
+
 export function CarouselHero() {
   return (
     <Carousel
@@ -42,6 +53,7 @@ export function CarouselHero() {
       dotListClass="custom-dot-list-style"
       itemClass="carousel-item-padding-40-px"
       arrows={false}
+      customDot={<CustomDot />}
     >
       <div className=" h-screen flex flex-col justify-center    text-white  gap-6">
         <h2 className="font-dream lg:text-4xl">Special Donuts for</h2>
