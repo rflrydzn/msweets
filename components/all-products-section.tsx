@@ -96,7 +96,7 @@ function AllProducts() {
                   {category.items.map((item) => (
                     <CarouselItem
                       key={item.name}
-                      className="md:basis-1/2 lg:basis-1/4"
+                      className="md:basis-1/2 lg:basis-1/4 my-2"
                     >
                       <ProductCard
                         key={item.name}

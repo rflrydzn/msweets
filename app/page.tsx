@@ -6,6 +6,7 @@ import { PopularDesserts } from "@/components/popular-desserts";
 import DessertCard from "@/components/popular-dessert-card";
 import AllProducts from "@/components/all-products-section";
 import ProductCard from "@/components/all-products-card";
+import IndividualCakes from "@/components/individual-cakes-section";
 export default function Home() {
   return (
     <main>
@@ -19,6 +20,7 @@ export default function Home() {
 
       <PopularDesserts />
       <AllProducts />
+      <IndividualCakes />
     </main>
   );
 }
