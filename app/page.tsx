@@ -7,7 +7,8 @@ import DessertCard from "@/components/popular-dessert-card";
 import AllProducts from "@/components/all-products-section";
 import ProductCard from "@/components/all-products-card";
 import IndividualCakes from "@/components/individual-cakes-section";
-import Pay from "@/public/pay.jpg";
+import WhyTrustUs from "@/components/why-trust-us";
+
 export default function Home() {
   return (
     <main>
@@ -22,7 +23,7 @@ export default function Home() {
       <PopularDesserts />
       <AllProducts />
       <IndividualCakes />
-      <Image src={Pay} alt="pay" className="text-red" width={150} />
+      <WhyTrustUs />
     </main>
   );
 }
