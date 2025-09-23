@@ -19,6 +19,9 @@ import { cn } from "@/lib/utils";
 import type { ComponentProps } from "react";
 import Logo from "@/public/msweets-logo.png";
 import Image from "next/image";
+import Cart from "@/public/cart-icon.png";
+import { Search } from "lucide-react";
+
 // Simple logo component for the navbar
 
 // Hamburger icon component
@@ -74,6 +77,7 @@ export interface Navbar04Props extends React.HTMLAttributes<HTMLElement> {
 }
 // Default navigation links
 const defaultNavigationLinks: Navbar04NavItem[] = [
+  { href: "#", label: "Home" },
   { href: "#", label: "Shop" },
   { href: "#", label: "Sale" },
   { href: "#", label: "Blog" },
@@ -87,7 +91,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
       logo = Logo,
       logoHref = "#",
       navigationLinks = defaultNavigationLinks,
-      signInText = "Sign In",
+      signInText = "Login/Sign Up",
       signInHref = "#signin",
       cartText = "Cart",
       cartHref = "#cart",
@@ -143,7 +147,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
       <header
         ref={combinedRef}
         className={cn(
-          "absolute top-0 z-50 w-full bg-none backdrop-blur  px-4 md:px-6 [&_*]:no-underline",
+          "absolute top-0 z-50 w-full bg-none backdrop-blur  md:px-6 [&_*]:no-underline  lg:px-24 py-8",
           className
         )}
         {...props}
@@ -193,7 +197,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
                             e.preventDefault();
                             if (onSignInClick) onSignInClick();
                           }}
-                          className="flex w-full items-center rounded-md px-3 py-2 text-sm font-medium transition-colors  hover:text-accent-foreground focus:text-accent-foreground cursor-pointer no-underline"
+                          className="text-white flex w-full items-center rounded-md px-3 py-2 text-sm font-medium transition-colors  hover:text-accent-foreground focus:text-accent-foreground cursor-pointer no-underline"
                         >
                           {signInText}
                         </button>
@@ -207,12 +211,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
                             if (onCartClick) onCartClick();
                           }}
                         >
-                          <span className="flex items-baseline gap-2">
-                            {cartText}
-                            <span className="text-primary-foreground/60 text-xs">
-                              {cartCount}
-                            </span>
-                          </span>
+                          <Image src={Cart} alt="Cart Icon" />
                         </Button>
                       </NavigationMenuItem>
                     </NavigationMenuList>
@@ -231,13 +230,13 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
               {/* Navigation menu */}
               {!isMobile && (
                 <NavigationMenu className="flex">
-                  <NavigationMenuList className="gap-1">
+                  <NavigationMenuList className="">
                     {navigationLinks.map((link, index) => (
                       <NavigationMenuItem key={index}>
                         <NavigationMenuLink
                           href={link.href}
                           onClick={(e) => e.preventDefault()}
-                          className="text-muted-foreground hover:text-primary py-1.5 font-medium transition-colors cursor-pointer group inline-flex h-10 w-max items-center justify-center rounded-md  px-4 text-sm  focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                          className="text-white hover:text-primary py-1.5 font-medium transition-colors cursor-pointer group inline-flex h-10 w-max items-center justify-center rounded-md  px-4 text-sm  focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                         >
                           {link.label}
                         </NavigationMenuLink>
@@ -267,7 +266,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-sm font-medium  hover:text-accent-foreground"
+                className="text-white text-sm font-medium  hover:text-accent-foreground"
                 onClick={(e) => {
                   e.preventDefault();
                   if (onSignInClick) onSignInClick();
@@ -275,21 +274,24 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
               >
                 {signInText}
               </Button>
-              <Button
-                size="sm"
-                className="text-sm font-medium px-4 h-9 rounded-md shadow-sm"
+              <button
+                className="rounded-full bg-white text-sm font-medium p-2 shadow-sm "
                 onClick={(e) => {
                   e.preventDefault();
                   if (onCartClick) onCartClick();
                 }}
               >
-                <span className="flex items-baseline gap-2">
-                  {cartText}
-                  <span className="text-primary-foreground/60 text-xs">
-                    {cartCount}
-                  </span>
-                </span>
-              </Button>
+                <Search className="text-brand-red" />
+              </button>
+              <button
+                className="rounded-full bg-white text-sm font-medium p-2 shadow-sm "
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (onCartClick) onCartClick();
+                }}
+              >
+                <Image src={Cart} alt="Cart Icon" width={24} />
+              </button>
             </div>
           )}
         </div>
