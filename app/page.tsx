@@ -9,10 +9,12 @@ import ProductCard from "@/components/all-products-card";
 import IndividualCakes from "@/components/individual-cakes-section";
 import WhyTrustUs from "@/components/why-trust-us";
 import Footer from "@/components/footer-section";
+import Banner from "@/components/banner";
 
 export default function Home() {
   return (
     <main>
+      <Banner />
       <Navbar01 />
       <section
         className="h-screen w-full bg-cover bg-center"
