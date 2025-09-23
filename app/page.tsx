@@ -8,6 +8,7 @@ import AllProducts from "@/components/all-products-section";
 import ProductCard from "@/components/all-products-card";
 import IndividualCakes from "@/components/individual-cakes-section";
 import WhyTrustUs from "@/components/why-trust-us";
+import Footer from "@/components/footer-section";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <AllProducts />
       <IndividualCakes />
       <WhyTrustUs />
+      <Footer />
     </main>
   );
 }
