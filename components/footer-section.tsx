@@ -24,7 +24,7 @@ import {
 import Logo from "@/public/msweets-logo.png";
 import Image from "next/image";
 function Footer() {
-  const [isDarkMode, setIsDarkMode] = React.useState(true);
+  const [isDarkMode, setIsDarkMode] = React.useState(false);
   const [isChatOpen, setIsChatOpen] = React.useState(false);
 
   React.useEffect(() => {
