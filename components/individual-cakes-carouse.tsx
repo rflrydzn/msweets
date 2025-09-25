@@ -3,6 +3,11 @@ import "react-multi-carousel/lib/styles.css";
 import CakeCard from "./individual-cakes-card";
 import * as React from "react";
 import Carousel from "react-multi-carousel";
+import {
+  ButtonGroupProps,
+  ArrowProps,
+  DotProps,
+} from "react-multi-carousel/lib/types";
 
 const responsive = {
   desktop: {
@@ -45,7 +50,7 @@ const cakes = [
   },
 ];
 
-const CustomDot = ({ onClick, active }: any) => {
+const CustomDot = ({ onClick, active }: DotProps) => {
   return (
     <button
       onClick={onClick}

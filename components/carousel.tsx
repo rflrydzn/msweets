@@ -1,5 +1,11 @@
 "use client";
 import Carousel from "react-multi-carousel";
+import {
+  ButtonGroupProps,
+  ArrowProps,
+  DotProps,
+} from "react-multi-carousel/lib/types";
+
 import "react-multi-carousel/lib/styles.css";
 import Image from "next/image";
 import Hero1 from "@/public/hero.png";
@@ -28,16 +34,16 @@ const responsive = {
   },
 };
 
-const CustomRightArrow = ({ onClick, ...rest }: any) => {
-  const {
-    onMove,
-    carouselState: { currentSlide, deviceType },
-  } = rest;
-  // onMove means if dragging or swiping in progress.
-  return <button onClick={() => onClick()} />;
-};
+// const CustomRightArrow = ({ onClick, ...rest }: ArrowProps) => {
+//   const {
+//     onMove,
+//     carouselState: { currentSlide, deviceType },
+//   } = rest;
+//   // onMove means if dragging or swiping in progress.
+//   return <button onClick={() => onClick()} />;
+// };
 
-const CustomDot = ({ onClick, active }: any) => {
+const CustomDot = ({ onClick, active }: DotProps) => {
   return (
     <button
       onClick={onClick}

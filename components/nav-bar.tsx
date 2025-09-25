@@ -62,7 +62,7 @@ export interface Navbar04NavItem {
   label: string;
 }
 export interface Navbar04Props extends React.HTMLAttributes<HTMLElement> {
-  logo?: any;
+  logo?: string;
   logoHref?: string;
   navigationLinks?: Navbar04NavItem[];
   signInText?: string;
