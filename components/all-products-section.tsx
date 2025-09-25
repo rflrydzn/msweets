@@ -75,9 +75,11 @@ function AllProducts() {
 
   return (
     <section className="flex flex-col items-center p-16 gap-6">
-      <h1 className="text-brand-orange font-dream lg:text-3xl">All Products</h1>
+      <h1 className="text-brand-orange font-dream md:text-3xl lg:text-3xl">
+        All Products
+      </h1>
 
-      <div className="flex w-full flex-col gap-6">
+      <div className="flex w-full flex-col ">
         <Tabs defaultValue="Cake">
           {/* ✅ All triggers go in a single TabsList */}
           <TabsList>

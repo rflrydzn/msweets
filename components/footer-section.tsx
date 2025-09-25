@@ -119,7 +119,7 @@ function Footer() {
                       size="icon"
                       className="rounded-full"
                     >
-                      <Facebook className="h-4 w-4" />
+                      <Facebook className="h-4 w-4 text-black" />
                       <span className="sr-only">Facebook</span>
                     </Button>
                   </TooltipTrigger>
@@ -136,7 +136,7 @@ function Footer() {
                       size="icon"
                       className="rounded-full"
                     >
-                      <Twitter className="h-4 w-4" />
+                      <Twitter className="h-4 w-4 text-black" />
                       <span className="sr-only">Twitter</span>
                     </Button>
                   </TooltipTrigger>
@@ -153,7 +153,7 @@ function Footer() {
                       size="icon"
                       className="rounded-full"
                     >
-                      <Instagram className="h-4 w-4" />
+                      <Instagram className="h-4 w-4 text-black" />
                       <span className="sr-only">Instagram</span>
                     </Button>
                   </TooltipTrigger>
@@ -170,7 +170,7 @@ function Footer() {
                       size="icon"
                       className="rounded-full"
                     >
-                      <Linkedin className="h-4 w-4" />
+                      <Linkedin className="h-4 w-4 text-black" />
                       <span className="sr-only">LinkedIn</span>
                     </Button>
                   </TooltipTrigger>

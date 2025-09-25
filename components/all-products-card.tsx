@@ -11,7 +11,7 @@ function ProductCard({
   imageUrl?: string;
 }) {
   return (
-    <div className="w-[300px] rounded-3xl border overflow-hidden  shadow-md">
+    <div className="rounded-3xl border overflow-hidden  shadow-md">
       {/* Image */}
       <div className="h-64 w-full">
         <img src={imageUrl} alt={name} className="w-full h-full object-cover" />

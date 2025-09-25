@@ -147,7 +147,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
       <header
         ref={combinedRef}
         className={cn(
-          "absolute top-0 z-40 w-full bg-none backdrop-blur  md:px-6 [&_*]:no-underline  lg:px-24 py-8",
+          "absolute top-0 z-40 w-full bg-none backdrop-blur  md:px-6 [&_*]:no-underline  lg:px-24 lg:py-6 ",
           className
         )}
         {...props}
@@ -164,7 +164,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
                     variant="ghost"
                     size="icon"
                   >
-                    <HamburgerIcon />
+                    <HamburgerIcon className="text-white" />
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent align="start" className="w-64 p-1">
@@ -223,9 +223,13 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
             <div className="flex flex-1 items-center gap-6 max-md:justify-between">
               <button
                 onClick={(e) => e.preventDefault()}
-                className="flex items-center space-x-2 text-primary hover:text-primary/90 transition-colors cursor-pointer"
+                className="hidden  md:flex items-center space-x-2 text-primary hover:text-primary/90 transition-colors cursor-pointer"
               >
-                <Image src={Logo} alt="logo" width={50} />
+                <Image
+                  src={Logo}
+                  alt="logo"
+                  className="w-10 md:w-20 lg:w-20 2xl:w-25"
+                />
               </button>
               {/* Navigation menu */}
               {!isMobile && (
@@ -236,7 +240,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
                         <NavigationMenuLink
                           href={link.href}
                           onClick={(e) => e.preventDefault()}
-                          className="text-white hover:text-primary py-1.5 font-medium transition-colors cursor-pointer group inline-flex h-10 w-max items-center justify-center rounded-md  px-4 text-sm  focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                          className="text-white hover:text-primary py-1.5 font-medium transition-colors cursor-pointer group inline-flex h-10 w-max items-center justify-center rounded-md  px-4 text-sm  focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 2xl:text-2xl"
                         >
                           {link.label}
                         </NavigationMenuLink>
@@ -266,7 +270,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-white text-sm font-medium  hover:text-accent-foreground"
+                className="text-white text-sm font-medium  hover:text-accent-foreground 2xl:text-2xl"
                 onClick={(e) => {
                   e.preventDefault();
                   if (onSignInClick) onSignInClick();
@@ -274,7 +278,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
               >
                 {signInText}
               </Button>
-              <button
+              {/* <button
                 className="rounded-full bg-white text-sm font-medium p-2 shadow-sm "
                 onClick={(e) => {
                   e.preventDefault();
@@ -282,7 +286,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
                 }}
               >
                 <Search className="text-brand-red" />
-              </button>
+              </button> */}
               <button
                 className="rounded-full bg-white text-sm font-medium p-2 shadow-sm "
                 onClick={(e) => {

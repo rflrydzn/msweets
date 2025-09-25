@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
 import { Inter } from "next/font/google";
+import { Navbar01 } from "@/components/nav-bar";
 
 const dreamToBerich = localFont({
   src: "../public/fonts/DreamToBerich.ttf",
@@ -37,6 +38,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}
       >
+        <Navbar01 />
         {children}
       </body>
     </html>

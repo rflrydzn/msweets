@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <main>
       <Banner />
-      <Navbar01 />
+      {/* <Navbar01 /> */}
       <section
         className="h-screen w-full bg-cover bg-center"
         style={{ backgroundImage: "url('/bg.png')" }}
