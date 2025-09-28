@@ -1,7 +1,7 @@
 "use client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ProductCard from "./all-products-card";
-import Products from "@/Products.json";
+// import Products from "@/Products.json";
 import {
   Carousel,
   CarouselContent,
@@ -12,6 +12,11 @@ import {
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { useCarousel } from "@/components/ui/carousel";
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
+import { useFetchCategories } from "@/lib/hooks/useFetchCategories";
+import { useFetchProducts } from "@/lib/hooks/useFetchGroupedProducts";
+import { GroupedProducts, Product } from "@/lib/types/types";
 
 type ButtonGroupProps = {
   next?: () => void;
@@ -44,35 +49,36 @@ function CustomControls() {
 }
 
 function AllProducts() {
-  const ButtonGroup: React.FC<ButtonGroupProps> = ({
-    next,
-    previous,
-    carouselState,
-  }) => {
-    const currentSlide = carouselState?.currentSlide ?? 0;
+  const { data: groupedProducts = [], isLoading } = useFetchProducts();
+  useEffect(() => console.log(groupedProducts));
+  // const ButtonGroup: React.FC<ButtonGroupProps> = ({
+  //   next,
+  //   previous,
+  //   carouselState,
+  // }) => {
+  //   const currentSlide = carouselState?.currentSlide ?? 0;
 
-    return (
-      <div className="carousel-button-group absolute">
-        <Button
-          className={
-            currentSlide === 0
-              ? "disable"
-              : "rounded-full w-8 h-8 bg-white border border-brand-orange"
-          }
-          onClick={previous}
-        >
-          <ChevronLeft className="text-brand-red" />
-        </Button>
-        <Button
-          onClick={next}
-          className="rounded-full w-8 h-8 bg-white border border-brand-orange"
-        >
-          <ChevronRight className="text-brand-red" />
-        </Button>
-      </div>
-    );
-  };
-
+  //   return (
+  //     <div className="carousel-button-group absolute">
+  //       <Button
+  //         className={
+  //           currentSlide === 0
+  //             ? "disable"
+  //             : "rounded-full w-8 h-8 bg-white border border-brand-orange"
+  //         }
+  //         onClick={previous}
+  //       >
+  //         <ChevronLeft className="text-brand-red" />
+  //       </Button>
+  //       <Button
+  //         onClick={next}
+  //         className="rounded-full w-8 h-8 bg-white border border-brand-orange"
+  //       >
+  //         <ChevronRight className="text-brand-red" />
+  //       </Button>
+  //     </div>
+  //   );
+  // };
   return (
     <section className="flex flex-col items-center p-16 gap-6">
       <h1 className="text-brand-orange font-dream md:text-3xl lg:text-3xl">
@@ -83,19 +89,19 @@ function AllProducts() {
         <Tabs defaultValue="Cake">
           {/* ✅ All triggers go in a single TabsList */}
           <TabsList>
-            {Products.map((category) => (
-              <TabsTrigger key={category.category} value={category.category}>
-                {category.category}
+            {groupedProducts.map((grouped: GroupedProducts) => (
+              <TabsTrigger key={grouped.category} value={grouped.category}>
+                {grouped.category}
               </TabsTrigger>
             ))}
           </TabsList>
 
           {/* ✅ Render one TabsContent per category */}
-          {Products.map((category) => (
-            <TabsContent key={category.category} value={category.category}>
+          {groupedProducts.map((grouped) => (
+            <TabsContent key={grouped.category} value={grouped.category}>
               <Carousel>
                 <CarouselContent>
-                  {category.items.map((item) => (
+                  {grouped.items.map((item) => (
                     <CarouselItem
                       key={item.name}
                       className="md:basis-1/2 lg:basis-1/4 my-2"

@@ -1,8 +1,13 @@
-// app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
 import { Inter } from "next/font/google";
+import { Navbar01 } from "@/components/nav-bar";
+import QueryProvider from "@/components/query-provider"; // ✅ import
+
+// const dreamToBerich = localFont({
+//   src: "../public/fonts/DreamToBerich.ttf",
+// });
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,15 +30,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}
       >
-        {children}
+        <QueryProvider>
+          <Navbar01 />
+          {children}
+        </QueryProvider>
       </body>
     </html>
   );
