@@ -31,9 +31,10 @@ import { ArrowUpDown, X } from "lucide-react";
 function AllProducts() {
   const { data: Products } = useFetchTableProducts();
   const [sortBy, setSortBy] = useState();
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
   const categories = [
-    { id: 0, name: "All" },
+    // { id: 0, name: "All" },
     { id: 1, name: "Cake" },
     { id: 2, name: "Cupcake" },
     { id: 3, name: "Brownies" },
@@ -43,6 +44,22 @@ function AllProducts() {
     { id: 7, name: "Krinkles" },
     { id: 8, name: "Dessert Bars" },
   ];
+
+  const toggleSelectCategory = (checked: boolean, category: string) => {
+    if (checked) {
+      setSelectedCategories((prev) => [...prev, category]);
+    } else {
+      setSelectedCategories((prev) => prev.filter((c) => c !== category));
+    }
+  };
+
+  const filteredProducts = Products?.filter((product) => {
+    if (selectedCategories.length === 0) return true;
+
+    return selectedCategories.includes(product.category);
+  });
+
+  useEffect(() => console.log("cat", selectedCategories), [selectedCategories]);
   return (
     <div className="max-w-7xl mx-auto space-y-5">
       <Breadcrumb>
@@ -110,7 +127,12 @@ function AllProducts() {
               <Label className="font-bold">Variety</Label>
               {categories.map((variety) => (
                 <div className="flex gap-3" key={variety.name}>
-                  <Checkbox />
+                  <Checkbox
+                    checked={selectedCategories.includes(variety.name)}
+                    onCheckedChange={(checked) =>
+                      toggleSelectCategory(!!checked, variety.name)
+                    }
+                  />
                   <Label className="text-brand-gray">{variety.name}</Label>
                 </div>
               ))}
@@ -124,7 +146,7 @@ function AllProducts() {
         </div>
         <main className="md:col-span-3">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {Products?.map((product) => (
+            {filteredProducts?.map((product) => (
               <ProductCard
                 key={product.name}
                 name={product.name}

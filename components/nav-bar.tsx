@@ -274,7 +274,9 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-white text-sm font-medium  hover:text-accent-foreground 2xl:text-2xl"
+                className={`${
+                  pathname !== "/" ? "text-black " : "text-white "
+                } text-sm font-medium  hover:text-accent-foreground 2xl:text-2xl`}
                 onClick={(e) => {
                   e.preventDefault();
                   if (onSignInClick) onSignInClick();
