@@ -21,6 +21,7 @@ import Logo from "@/public/msweets-logo.png";
 import Image from "next/image";
 import Cart from "@/public/cart-icon.png";
 import { Search } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 // Simple logo component for the navbar
 
@@ -106,6 +107,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
   ) => {
     const [isMobile, setIsMobile] = useState(false);
     const containerRef = useRef<HTMLElement>(null);
+    const pathname = usePathname();
     const searchId = useId();
     useEffect(() => {
       const checkWidth = () => {
@@ -147,7 +149,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
       <header
         ref={combinedRef}
         className={cn(
-          "absolute top-0 z-40 w-full bg-none backdrop-blur  md:px-6 [&_*]:no-underline  lg:px-24 lg:py-6 ",
+          "sticky top-0 z-40 w-full bg-none backdrop-blur  md:px-6 [&_*]:no-underline  lg:px-24 lg:py-6 ",
           className
         )}
         {...props}
@@ -240,7 +242,9 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
                         <NavigationMenuLink
                           href={link.href}
                           onClick={(e) => e.preventDefault()}
-                          className="text-white hover:text-primary py-1.5 font-medium transition-colors cursor-pointer group inline-flex h-10 w-max items-center justify-center rounded-md  px-4 text-sm  focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 2xl:text-2xl"
+                          className={`${
+                            pathname !== "/" ? "text-black" : "text-white"
+                          } hover:text-primary py-1.5 font-medium transition-colors cursor-pointer group inline-flex h-10 w-max items-center justify-center rounded-md  px-4 text-sm  focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 2xl:text-2xl`}
                         >
                           {link.label}
                         </NavigationMenuLink>
