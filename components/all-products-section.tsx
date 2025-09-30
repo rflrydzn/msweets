@@ -17,6 +17,7 @@ import { supabase } from "@/lib/supabase";
 import { useFetchCategories } from "@/lib/hooks/useFetchCategories";
 import { useFetchProducts } from "@/lib/hooks/useFetchGroupedProducts";
 import { GroupedProducts, Product } from "@/lib/types/types";
+import Link from "next/link";
 
 type ButtonGroupProps = {
   next?: () => void;
@@ -120,6 +121,13 @@ function AllProducts() {
             </TabsContent>
           ))}
         </Tabs>
+        <div className="flex justify-center mt-6">
+          <Link href="/all-products">
+            <Button variant="ghost" className="text-brand-red underline">
+              View All Products
+            </Button>
+          </Link>
+        </div>
       </div>
     </section>
   );

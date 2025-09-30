@@ -110,7 +110,7 @@ function AllProducts() {
   });
 
   return (
-    <div className="max-w-7xl mx-auto space-y-5">
+    <div className="max-w-7xl mx-auto space-y-5 my-12">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
