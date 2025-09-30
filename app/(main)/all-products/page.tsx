@@ -14,7 +14,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { Slider } from "@/components/ui/slider";
-import { useFetchProducts } from "@/lib/hooks/useFetchGroupedProducts";
 import { useFetchTableProducts } from "@/lib/hooks/useFetchTableProducts";
 import { useEffect, useState } from "react";
 import {
@@ -28,13 +27,27 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ArrowUpDown, X } from "lucide-react";
 
+type Filters = {
+  categories: string[];
+  minPrice: number;
+  maxPrice: number;
+};
+
 function AllProducts() {
   const { data: Products } = useFetchTableProducts();
-  const [sortBy, setSortBy] = useState();
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
+  const [filters, setFilters] = useState<Filters>({
+    categories: [],
+    minPrice: 0,
+    maxPrice: 0,
+  });
+
+  const [selectedMinPrice, setSelectedMinPrice] = useState(0);
+  const [selectedMaxPrice, setSelectedMaxPrice] = useState(0);
+
+  const [sortOrder, setSortOrder] = useState("default");
 
   const categories = [
-    // { id: 0, name: "All" },
     { id: 1, name: "Cake" },
     { id: 2, name: "Cupcake" },
     { id: 3, name: "Brownies" },
@@ -46,20 +59,56 @@ function AllProducts() {
   ];
 
   const toggleSelectCategory = (checked: boolean, category: string) => {
-    if (checked) {
-      setSelectedCategories((prev) => [...prev, category]);
-    } else {
-      setSelectedCategories((prev) => prev.filter((c) => c !== category));
-    }
+    setFilters((prev) => ({
+      ...prev,
+      categories: checked
+        ? [...prev.categories, category]
+        : prev.categories.filter((c) => c !== category),
+    }));
   };
 
-  const filteredProducts = Products?.filter((product) => {
-    if (selectedCategories.length === 0) return true;
+  const clearFilters = () => {
+    setFilters((prev) => ({
+      ...prev,
+      categories: [],
+    }));
+    setSelectedMinPrice(filters.minPrice);
+    setSelectedMaxPrice(filters.maxPrice);
+  };
 
-    return selectedCategories.includes(product.category);
+  useEffect(() => {
+    if (Products && Products.length > 0) {
+      const prices = Products.map((p) => p.price);
+      const min = Math.min(...prices);
+      const max = Math.max(...prices);
+      setFilters((prev) => ({
+        ...prev,
+        minPrice: min,
+        maxPrice: max,
+      }));
+      setSelectedMinPrice(min);
+      setSelectedMaxPrice(max);
+    }
+  }, [Products]);
+
+  const filteredProducts = Products?.filter((product) => {
+    const matchesCategory =
+      filters.categories.length === 0 ||
+      filters.categories.includes(product.category);
+    const matchesPrice =
+      product.price >= selectedMinPrice && product.price <= selectedMaxPrice;
+    return matchesCategory && matchesPrice;
   });
 
-  useEffect(() => console.log("cat", selectedCategories), [selectedCategories]);
+  const sortedProducts = filteredProducts?.sort((a, b) => {
+    if (sortOrder === "ascending") {
+      return a.price - b.price;
+    } else if (sortOrder === "descending") {
+      return b.price - a.price;
+    }
+    return 0;
+  });
+
   return (
     <div className="max-w-7xl mx-auto space-y-5">
       <Breadcrumb>
@@ -80,17 +129,27 @@ function AllProducts() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="text-brand-gray">
-              <ArrowUpDown /> Default
+              <ArrowUpDown />{" "}
+              {sortOrder === "ascending"
+                ? "Low to High"
+                : sortOrder === "descending"
+                ? "High to Low"
+                : "Default"}
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56">
             <DropdownMenuLabel>Price:</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuRadioGroup>
+            <DropdownMenuRadioGroup
+              value={sortOrder}
+              onValueChange={setSortOrder}
+            >
+              <DropdownMenuRadioItem value="default">
+                Default
+              </DropdownMenuRadioItem>
               <DropdownMenuRadioItem value="ascending">
                 Low to High
               </DropdownMenuRadioItem>
-
               <DropdownMenuRadioItem value="descending">
                 High to Low
               </DropdownMenuRadioItem>
@@ -103,17 +162,44 @@ function AllProducts() {
           <aside className="rounded-xl border-2 p-3 w-full">
             <div className="space-y-4 mb-3">
               <Label className="font-bold">Price</Label>
-              <Slider min={0} max={1000} defaultValue={[0, 1000]} step={1} />
+              <Slider
+                min={filters.minPrice}
+                max={filters.maxPrice}
+                step={10}
+                value={[selectedMinPrice, selectedMaxPrice]}
+                onValueChange={([min, max]) => {
+                  setSelectedMinPrice(min);
+                  setSelectedMaxPrice(max);
+                }}
+              />
               <div className="flex items-center">
                 <div className="relative">
-                  <Input className="pr-6" />
+                  <Input
+                    className="pr-6"
+                    type="number"
+                    value={selectedMinPrice}
+                    onChange={(e) =>
+                      setSelectedMinPrice(Number(e.target.value))
+                    }
+                    min={filters.minPrice}
+                    max={filters.maxPrice}
+                  />
                   <span className="absolute inset-y-0 right-2 flex items-center text-brand-gray">
                     ₱
                   </span>
                 </div>
                 <span className="mx-5">-</span>
                 <div className="relative">
-                  <Input className="pr-6" />
+                  <Input
+                    className="pr-6"
+                    type="number"
+                    value={selectedMaxPrice}
+                    onChange={(e) =>
+                      setSelectedMaxPrice(Number(e.target.value))
+                    }
+                    min={filters.minPrice}
+                    max={filters.maxPrice}
+                  />
                   <span className="absolute inset-y-0 right-2 flex items-center text-brand-gray">
                     ₱
                   </span>
@@ -128,7 +214,7 @@ function AllProducts() {
               {categories.map((variety) => (
                 <div className="flex gap-3" key={variety.name}>
                   <Checkbox
-                    checked={selectedCategories.includes(variety.name)}
+                    checked={filters.categories.includes(variety.name)}
                     onCheckedChange={(checked) =>
                       toggleSelectCategory(!!checked, variety.name)
                     }
@@ -139,14 +225,18 @@ function AllProducts() {
             </div>
           </aside>
 
-          <Button variant="outline" className="text-brand-gray mt-2">
+          <Button
+            variant="outline"
+            className="text-brand-gray mt-2"
+            onClick={clearFilters}
+          >
             <X className="mr-2 h-4 w-4" />
             Clear filters
           </Button>
         </div>
         <main className="md:col-span-3">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {filteredProducts?.map((product) => (
+            {sortedProducts?.map((product) => (
               <ProductCard
                 key={product.name}
                 name={product.name}
