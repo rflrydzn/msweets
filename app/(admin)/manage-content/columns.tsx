@@ -70,8 +70,8 @@ export const columns: ColumnDef<FlattenedProduct>[] = [
     },
   },
   {
-    accessorKey: "categories",
-    header: "categories",
+    accessorKey: "category",
+    header: "category",
   },
   {
     id: "actions",

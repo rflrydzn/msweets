@@ -63,15 +63,12 @@ export function DataTable<TData, TValue>({
     setFileUploading(true);
 
     try {
-      // Ensure filename ends with .jpg
       const originalName = file.name;
       const nameWithoutExt = originalName.replace(/\.[^/.]+$/, "");
       const jpgFileName = `${nameWithoutExt}.jpg`;
 
-      // Create filepath that matches your RLS policy: public/filename.jpg
       const filepath = `public/${Date.now()}-${jpgFileName}`;
 
-      // Create a new File object with .jpg extension if needed
       let uploadFile = file;
       if (!originalName.toLowerCase().endsWith(".jpg")) {
         uploadFile = new File([file], jpgFileName, { type: "image/jpeg" });
@@ -86,7 +83,6 @@ export function DataTable<TData, TValue>({
         throw error;
       }
 
-      // Get the public URL
       const {
         data: { publicUrl },
       } = supabase.storage.from("images").getPublicUrl(filepath);
@@ -119,7 +115,7 @@ export function DataTable<TData, TValue>({
   };
 
   const categories = [
-    { id: 1, name: "Cake & Cup Treats" },
+    { id: 1, name: "Cakes & Cup Treats" },
     { id: 2, name: "Bars & Bites" },
     { id: 3, name: "Pinoy Favorites" },
   ];
