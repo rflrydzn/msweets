@@ -6,6 +6,7 @@ import { Pencil, Trash2 } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { useQueryClient } from "@tanstack/react-query";
 import { FlattenedProduct, Product } from "@/lib/types/types";
+import { EditItem } from "@/components/edit-item-dialog";
 
 function ActionCell({ product }: { product: FlattenedProduct }) {
   const queryClient = useQueryClient();
@@ -26,13 +27,14 @@ function ActionCell({ product }: { product: FlattenedProduct }) {
 
   return (
     <div className="flex gap-2">
-      <Button
+      {/* <Button
         variant="outline"
         size="sm"
         onClick={() => console.log("Edit", product.id)}
       >
         <Pencil className="h-4 w-4" />
-      </Button>
+      </Button> */}
+      <EditItem product={product} />
       <Button variant="destructive" size="sm" onClick={handleDelete}>
         <Trash2 className="h-4 w-4" />
       </Button>
