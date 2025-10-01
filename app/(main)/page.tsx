@@ -26,7 +26,6 @@ export default function Home() {
       <AllProducts />
       <IndividualCakes />
       <WhyTrustUs />
-      <Footer />
     </main>
   );
 }

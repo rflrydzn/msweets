@@ -60,14 +60,9 @@ function ManageContent() {
   });
 
   const categories = [
-    { id: 1, name: "Cake" },
-    { id: 2, name: "Cupcake" },
-    { id: 3, name: "Brownies" },
-    { id: 4, name: "Cookies" },
-    { id: 5, name: "Muffins" },
-    { id: 6, name: "Banana Loaf" },
-    { id: 7, name: "Krinkles" },
-    { id: 8, name: "Dessert Bars" },
+    { id: 1, name: "Cake & Cup Treats" },
+    { id: 2, name: "Bars & Bites" },
+    { id: 3, name: "Pinoy Favorites" },
   ];
 
   const uploadImageToBucketAndGetUrl = async () => {
@@ -142,7 +137,7 @@ function ManageContent() {
         </h1>
 
         <div className="flex w-full flex-col ">
-          <Tabs defaultValue="Cake">
+          <Tabs defaultValue="Cake & Cup Treats">
             {/* ✅ All triggers go in a single TabsList */}
             <TabsList>
               {groupedProducts.map((grouped: GroupedProducts) => (

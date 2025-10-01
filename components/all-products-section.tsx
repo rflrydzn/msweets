@@ -87,7 +87,7 @@ function AllProducts() {
       </h1>
 
       <div className="flex w-full flex-col ">
-        <Tabs defaultValue="Cake">
+        <Tabs defaultValue="Cakes & Cup Treats">
           {/* ✅ All triggers go in a single TabsList */}
           <TabsList>
             {groupedProducts.map((grouped: GroupedProducts) => (

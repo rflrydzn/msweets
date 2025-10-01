@@ -112,21 +112,16 @@ export function DataTable<TData, TValue>({
       },
       {
         onSuccess: () => {
-          setNewProduct({ name: "", price: "", image_url: "", category_id: 0 });
+          setNewProduct({ name: "", price: "", image_url: "", category_id: 1 });
         },
       }
     );
   };
 
   const categories = [
-    { id: 1, name: "Cake" },
-    { id: 2, name: "Cupcake" },
-    { id: 3, name: "Brownies" },
-    { id: 4, name: "Cookies" },
-    { id: 5, name: "Muffins" },
-    { id: 6, name: "Banana Loaf" },
-    { id: 7, name: "Krinkles" },
-    { id: 8, name: "Dessert Bars" },
+    { id: 1, name: "Cake & Cup Treats" },
+    { id: 2, name: "Bars & Bites" },
+    { id: 3, name: "Pinoy Favorites" },
   ];
 
   return (
