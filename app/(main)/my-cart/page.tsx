@@ -2,7 +2,7 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { useFetchTableProducts } from "@/lib/hooks/useFetchTableProducts";
 
-function myCart() {
+function MyCart() {
   const { data: Products } = useFetchTableProducts();
   return (
     <div>
@@ -28,4 +28,4 @@ function myCart() {
   );
 }
 
-export default myCart;
+export default MyCart;
