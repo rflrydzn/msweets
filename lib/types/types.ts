@@ -38,3 +38,9 @@ export type FlattenedProduct = {
   image_url: string;
   category: string; // 👈 string instead of object
 };
+
+export type Categories = {
+  id: string;
+  name: string;
+  image_url: string;
+};

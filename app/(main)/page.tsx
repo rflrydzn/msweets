@@ -9,6 +9,7 @@ import IndividualCakes from "@/components/individual-cakes-section";
 import WhyTrustUs from "@/components/why-trust-us";
 import Footer from "@/components/footer-section";
 import Banner from "@/components/banner";
+import ShopByCategory from "@/components/shop-by-category";
 
 export default function Home() {
   return (
@@ -23,7 +24,8 @@ export default function Home() {
       </section>
 
       <PopularDesserts />
-      <AllProducts />
+      {/* <AllProducts /> */}
+      <ShopByCategory />
       <IndividualCakes />
       <WhyTrustUs />
     </main>

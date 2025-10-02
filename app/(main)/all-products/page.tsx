@@ -48,9 +48,16 @@ function AllProducts() {
   const [sortOrder, setSortOrder] = useState("default");
 
   const categories = [
-    { id: 1, name: "Cakes & Cup Treats" },
-    { id: 2, name: "Bars & Bites" },
-    { id: 3, name: "Pinoy Favorites" },
+    { id: 1, name: "Cakes" },
+    { id: 2, name: "Cupcakes" },
+    { id: 3, name: "Cookies" },
+    { id: 4, name: "Brownies" },
+    { id: 5, name: "Muffins" },
+    { id: 6, name: "Crinkles" },
+    { id: 7, name: "Macaroons" },
+    { id: 8, name: "Banana Loaf" },
+    { id: 9, name: "Dessert Bars" },
+    { id: 10, name: "Pinoy Favorites" },
   ];
 
   const toggleSelectCategory = (checked: boolean, category: string) => {

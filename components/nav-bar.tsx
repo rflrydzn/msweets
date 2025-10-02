@@ -149,7 +149,9 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
       <header
         ref={combinedRef}
         className={cn(
-          "sticky top-0 z-40 w-full bg-none backdrop-blur  md:px-6 [&_*]:no-underline  lg:px-24 lg:py-6 ",
+          `${
+            pathname !== "/" ? " relative" : "absolute"
+          } top-0 z-40 w-full bg-none backdrop-blur  md:px-6 [&_*]:no-underline  lg:px-24 lg:py-6 `,
           className
         )}
         {...props}
