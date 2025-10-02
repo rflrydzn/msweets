@@ -1,6 +1,7 @@
 "use client";
 import { useFetchCategories } from "@/lib/hooks/useFetchCategories";
 import Cake from "@/public/cake.png";
+import Link from "next/link";
 import { useEffect } from "react";
 // const categories = [
 //   "Cakes",
@@ -24,18 +25,23 @@ function ShopByCategory() {
       </h1>
       <div className="grid grid-cols-2 gap-10 w-full md:grid-cols-5 max-w-7xl mx-auto">
         {categories?.map((category) => (
-          <div
+          <Link
             key={category.name}
-            className="flex flex-col items-center justify-center gap-2 hover:scale-105 transition duration-300 cursor-pointer"
+            href={{
+              pathname: "/all-products",
+              query: { category: category.name },
+            }}
           >
-            <div className="rounded-full border aspect-square p-2 border-brand-red overflow-hidden">
-              <img
-                className="rounded-full w-full h-full object-cover"
-                src={category.image_url}
-              />
+            <div className="flex flex-col items-center justify-center gap-3 hover:scale-105 transition duration-300 cursor-pointer">
+              <div className="rounded-full border aspect-square p-2 border-brand-red overflow-hidden">
+                <img
+                  className="rounded-full w-full h-full object-cover"
+                  src={category.image_url}
+                />
+              </div>
+              <h2 className="font-medium">{category.name}</h2>
             </div>
-            <h2 className="font-medium">{category.name}</h2>
-          </div>
+          </Link>
         ))}
       </div>
     </section>

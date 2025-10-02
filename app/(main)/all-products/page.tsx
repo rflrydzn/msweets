@@ -16,6 +16,7 @@ import { Separator } from "@/components/ui/separator";
 import { Slider } from "@/components/ui/slider";
 import { useFetchTableProducts } from "@/lib/hooks/useFetchTableProducts";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -34,10 +35,11 @@ type Filters = {
 };
 
 function AllProducts() {
+  const searchParams = useSearchParams().get("category");
   const { data: Products } = useFetchTableProducts();
 
   const [filters, setFilters] = useState<Filters>({
-    categories: [],
+    categories: searchParams ? [searchParams] : [],
     minPrice: 0,
     maxPrice: 0,
   });
