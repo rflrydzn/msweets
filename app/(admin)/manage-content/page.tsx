@@ -137,7 +137,7 @@ function ManageContent() {
         </h1>
 
         <div className="flex w-full flex-col ">
-          <Tabs defaultValue="Cakes & Cup Treats">
+          <Tabs defaultValue="Cakes">
             {/* ✅ All triggers go in a single TabsList */}
             <TabsList>
               {groupedProducts.map((grouped: GroupedProducts) => (
