@@ -83,8 +83,11 @@ export default async function ProductPage({
       <section className="mt-5">
         <ProductTabs />
       </section>
-      <section>
-        <YouMayAlsoLike />
+      <section className="my-10 ">
+        <YouMayAlsoLike
+          categoryId={productInfo.category_id}
+          currentProductID={productInfo.id}
+        />
       </section>
     </main>
   );
