@@ -27,6 +27,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ArrowUpDown, X } from "lucide-react";
+import Link from "next/link";
 
 type Filters = {
   categories: string[];
@@ -241,12 +242,13 @@ function AllProducts() {
         <main className="md:col-span-3">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {sortedProducts?.map((product) => (
-              <ProductCard
-                key={product.name}
-                name={product.name}
-                price={product.price}
-                imageUrl={product.image_url}
-              />
+              <Link key={product.id} href={`/all-products/${product.id}`}>
+                <ProductCard
+                  name={product.name}
+                  price={product.price}
+                  imageUrl={product.image_url}
+                />
+              </Link>
             ))}
           </div>
         </main>

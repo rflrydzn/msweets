@@ -44,3 +44,23 @@ export type Categories = {
   name: string;
   image_url: string;
 };
+
+export type ProductInfo = {
+  id: number;
+  name: string;
+  price: number;
+  image_url: string;
+  description: string;
+  category_id: number;
+  options?: ProductOptions;
+};
+
+export type OptionValue = string | number | boolean;
+
+export interface OptionVariant {
+  [key: string]: OptionValue;
+}
+
+export interface ProductOptions {
+  [key: string]: OptionValue[] | OptionVariant[];
+}
