@@ -15,6 +15,7 @@ import { Label } from "@/components/ui/label";
 import VariantSelector_Basic_Ex_04 from "@/components/variant-selector-basic";
 import ProductTabs from "@/components/product-page-section2";
 import YouMayAlsoLike from "@/components/you-may-also-like";
+import { useState } from "react";
 export default async function ProductPage({
   params,
 }: {
@@ -63,20 +64,10 @@ export default async function ProductPage({
           </span>
           <Separator />
           <p className="text-brand-gray">{productInfo.description}</p>
-          <VariantSelector_Basic_Ex_04 options={productInfo.options ?? {}} />
+          <VariantSelector_Basic_Ex_04
+            options={productInfo.options ?? { prices: [] }}
+          />
 
-          <div className="flex justify-between items-center mt-6">
-            <h2 className="font-medium lg:text-3xl">₱{productInfo.price}</h2>
-            <div className="flex justify-center gap-2">
-              <Button className="bg-brand-red px-8 py-5">Order Now!</Button>
-              <Button
-                variant="outline"
-                className="border-brand-red text-brand-red px-8 py-5"
-              >
-                <ShoppingCart />
-              </Button>
-            </div>
-          </div>
           <Separator />
         </div>
       </section>

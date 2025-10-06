@@ -6,8 +6,8 @@ import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import { cn } from "@/lib/utils";
 
 export interface VariantItem {
-  id: string;
-  value: string;
+  // id: string;
+  price: number;
   label: string;
   disabled?: boolean;
 }
@@ -39,8 +39,8 @@ const VariantSelectorBasic = ({
       {variants?.map((variant, index) => (
         <div key={index} className="flex items-center">
           <RadioGroupPrimitive.Item
-            id={variant.id}
-            value={variant.value}
+            id={variant.label}
+            value={variant.price.toString()}
             disabled={variant.disabled}
             className={cn(
               "peer  relative aspect-square rounded-full border border-gray-300  text-center text-sm transition-all",

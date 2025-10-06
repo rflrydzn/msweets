@@ -61,6 +61,11 @@ export interface OptionVariant {
   [key: string]: OptionValue;
 }
 
+export interface PriceOption {
+  label: string;
+  price: number;
+}
+
 export interface ProductOptions {
-  [key: string]: OptionValue[] | OptionVariant[];
+  prices: PriceOption[];
 }
