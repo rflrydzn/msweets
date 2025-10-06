@@ -40,7 +40,7 @@ const VariantSelectorBasic = ({
         <div key={index} className="flex items-center">
           <RadioGroupPrimitive.Item
             id={variant.label}
-            value={variant.price.toString()}
+            value={index.toString()}
             disabled={variant.disabled}
             className={cn(
               "peer  relative aspect-square rounded-full border border-gray-300  text-center text-sm transition-all",

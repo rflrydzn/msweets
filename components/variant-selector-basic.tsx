@@ -5,28 +5,38 @@ import VariantSelectorBasic, {
   VariantItem,
 } from "@/components/variant-selector";
 
-import { ProductOptions } from "@/lib/types/types";
+import { ProductInfo, ProductOptions } from "@/lib/types/types";
 import { Button } from "./ui/button";
-import { ShoppingCart } from "lucide-react";
 import QuantitySelector from "./quantity-selector";
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { Label } from "./ui/label";
+import AddToCart from "./add-to-cart";
 export default function VariantSelector_Basic_Ex_04({
   options,
+  productInfo,
 }: {
   options: ProductOptions;
+  productInfo: ProductInfo;
 }) {
   const [quantity, setQuantity] = useState(1);
-  const [selectedSize, setSelectedSize] = useState(
-    (options.prices?.[0]?.price * quantity).toString() || ""
-  );
+  const [selectedOptionIndex, setSelectedOptionIndex] = useState("1");
 
-  const totalPrice = Number(selectedSize) * quantity;
+  const totalPrice =
+    options.prices[Number(selectedOptionIndex)].price * quantity;
 
-  // const totalPrice = useMemo(() => {
-  //   const base = Number(selectedSize);
-  //   return base * quantity;
-  // }, [quantity, selectedSize]);
+  const CartItemInfo = {
+    id: productInfo.id,
+    name: productInfo.name,
+    image_url: productInfo.image_url,
+    price: productInfo.price,
+    quantity: quantity,
+    option: productInfo.options?.prices[Number(selectedOptionIndex)] ?? {
+      id: 0,
+      label: "",
+      price: 0,
+    },
+  };
+  console.log("info", CartItemInfo);
   return (
     <div className="space-y-8">
       <div className=" bg-white  dark:border-gray-800 dark:bg-gray-900">
@@ -35,8 +45,8 @@ export default function VariantSelector_Basic_Ex_04({
             Size
           </Label>
           <VariantSelectorBasic
-            value={selectedSize}
-            onValueChange={setSelectedSize}
+            value={selectedOptionIndex}
+            onValueChange={setSelectedOptionIndex}
             variants={options.prices}
             className="gap-2 my-3"
             itemClassName="rounded-full min-w-[60px] bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800
@@ -58,12 +68,7 @@ export default function VariantSelector_Basic_Ex_04({
 
         <div className="flex justify-center gap-2">
           <Button className="bg-brand-red px-8 py-5">Order Now!</Button>
-          <Button
-            variant="outline"
-            className="border-brand-red text-brand-red px-8 py-5"
-          >
-            <ShoppingCart />
-          </Button>
+          <AddToCart CartItem={CartItemInfo} />
         </div>
       </div>
     </div>

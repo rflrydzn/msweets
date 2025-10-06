@@ -71,6 +71,7 @@ export default async function ProductPage({
             <p className="text-brand-gray">{productInfo.description}</p>
             <VariantSelector_Basic_Ex_04
               options={productInfo.options ?? { prices: [] }}
+              productInfo={productInfo}
             />
           </div>
           <Separator className="my-2" />

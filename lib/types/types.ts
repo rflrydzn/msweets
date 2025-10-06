@@ -63,6 +63,7 @@ export interface OptionVariant {
 }
 
 export interface PriceOption {
+  id: number;
   label: string;
   price: number;
 }
