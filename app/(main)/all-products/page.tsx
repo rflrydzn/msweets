@@ -116,10 +116,10 @@ function AllProducts() {
 
   return (
     <div className="max-w-7xl mx-auto space-y-5 my-12">
-      <Breadcrumb>
+      {/* <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            <BreadcrumbLink href="/">All Products</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
@@ -128,9 +128,12 @@ function AllProducts() {
             </BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
-      </Breadcrumb>
+      </Breadcrumb> */}
+      <h1 className="text-center font-dream text-3xl text-brand-orange">
+        All Products
+      </h1>
       <div className="flex justify-between">
-        <h2 className="lg:text-3xl">Filter</h2>
+        <h2 className="font-times lg:text-3xl">Filter</h2>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="text-brand-gray">

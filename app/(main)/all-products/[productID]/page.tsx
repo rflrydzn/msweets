@@ -8,14 +8,11 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
 import { fetchProductDetails } from "@/lib/fetchProductDetails";
-import { Button } from "@/components/ui/button";
+import { categories } from "@/lib/categories";
 import { Heart, Share, Share2, ShoppingCart } from "lucide-react";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
 import VariantSelector_Basic_Ex_04 from "@/components/variant-selector-basic";
 import ProductTabs from "@/components/product-page-section2";
 import YouMayAlsoLike from "@/components/you-may-also-like";
-import { useState } from "react";
 import ProductGallery from "@/components/image-gallery";
 export default async function ProductPage({
   params,
@@ -23,6 +20,7 @@ export default async function ProductPage({
   params: { productID: number };
 }) {
   const productInfo = await fetchProductDetails(params.productID);
+  const category = categories.find((cat) => cat.id === productInfo.category_id);
 
   if (!productInfo) {
     return <p>Product not found</p>;
@@ -33,11 +31,13 @@ export default async function ProductPage({
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            <BreadcrumbLink href="/all-products">All Products</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href="/">{productInfo.category_id}</BreadcrumbLink>
+            <BreadcrumbLink href={`/all-products?category=${category?.name}`}>
+              {category?.name}
+            </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
