@@ -53,6 +53,7 @@ export type ProductInfo = {
   description: string;
   category_id: number;
   options?: ProductOptions;
+  productGallery: string[];
 };
 
 export type OptionValue = string | number | boolean;

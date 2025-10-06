@@ -9,13 +9,14 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { fetchProductDetails } from "@/lib/fetchProductDetails";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart } from "lucide-react";
+import { Heart, Share, Share2, ShoppingCart } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import VariantSelector_Basic_Ex_04 from "@/components/variant-selector-basic";
 import ProductTabs from "@/components/product-page-section2";
 import YouMayAlsoLike from "@/components/you-may-also-like";
 import { useState } from "react";
+import ProductGallery from "@/components/image-gallery";
 export default async function ProductPage({
   params,
 }: {
@@ -46,29 +47,43 @@ export default async function ProductPage({
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <section className="flex gap-10 items-start">
-        <div className="w-1/2">
-          <img
-            className="rounded-3xl object-cover h-[500px] w-full"
-            src={productInfo.image_url}
-            alt={productInfo.name}
-          />
+      <section className="flex gap-10 my-8 items-start">
+        <div className="w-1/2 space-y-4">
+          <ProductGallery productInfo={productInfo} />
         </div>
-
         <div className="w-1/2 flex flex-col  ">
-          <h1 className="font-times font-bold md:text-3xl">
-            {productInfo.name}
-          </h1>
+          <div className="flex justify-between">
+            <h1 className="font-times font-bold md:text-3xl">
+              {productInfo.name}
+            </h1>
+            <div className="flex gap-3">
+              <Share2 />
+              <Heart />
+            </div>
+          </div>
+
           <span className="text-gray-400 text-xs">
             Product ID: {productInfo.id}
           </span>
+          <Separator className="my-2" />
+          <div className="space-y-5">
+            <span className="text-green-700 underline block">Is available</span>
+            <p className="text-brand-gray">{productInfo.description}</p>
+            <VariantSelector_Basic_Ex_04
+              options={productInfo.options ?? { prices: [] }}
+            />
+          </div>
           <Separator />
-          <p className="text-brand-gray">{productInfo.description}</p>
-          <VariantSelector_Basic_Ex_04
-            options={productInfo.options ?? { prices: [] }}
-          />
-
-          <Separator />
+          <div className="flex justify]-between">
+            <p>
+              <span className="text-brand-red font-bold">Free shipping</span> on
+              orders from P1000
+            </p>
+            <p>
+              <span className="text-brand-orange font-bold">Save 10%</span>
+              on your first online order
+            </p>
+          </div>
         </div>
       </section>
       <section className="mt-5">
