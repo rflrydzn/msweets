@@ -73,8 +73,8 @@ export default async function ProductPage({
               options={productInfo.options ?? { prices: [] }}
             />
           </div>
-          <Separator />
-          <div className="flex justify]-between">
+          <Separator className="my-2" />
+          <div className="flex justify-between">
             <p>
               <span className="text-brand-red font-bold">Free shipping</span> on
               orders from P1000
