@@ -170,7 +170,7 @@ export function DataTable<TData, TValue>({
             </TableRow>
           )}
 
-          <TableRow>
+          {/* <TableRow>
             <TableCell colSpan={columns.length}>
               <div className="flex gap-2 items-center">
                 <Input
@@ -241,7 +241,7 @@ export function DataTable<TData, TValue>({
                 </Button>
               </div>
             </TableCell>
-          </TableRow>
+          </TableRow> */}
         </TableBody>
       </Table>
     </div>

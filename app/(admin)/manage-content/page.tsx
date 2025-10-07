@@ -22,6 +22,7 @@ import { GroupedProducts, Product } from "@/lib/types/types";
 
 import { columns } from "./columns";
 import { DataTable } from "./data-table";
+import { AddProduct } from "./components/add-product";
 function CustomControls() {
   const { scrollNext, canScrollNext, scrollPrev, canScrollPrev } =
     useCarousel();
@@ -131,50 +132,8 @@ function ManageContent() {
 
   return (
     <>
-      <section className="flex flex-col items-center p-16 gap-6">
-        <h1 className="text-brand-orange font-dream md:text-3xl lg:text-3xl">
-          All Products
-        </h1>
-
-        <div className="flex w-full flex-col ">
-          <Tabs defaultValue="Cakes">
-            {/* ✅ All triggers go in a single TabsList */}
-            <TabsList>
-              {groupedProducts.map((grouped: GroupedProducts) => (
-                <TabsTrigger key={grouped.category} value={grouped.category}>
-                  {grouped.category}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-
-            {/* ✅ Render one TabsContent per category */}
-            {groupedProducts.map((grouped: GroupedProducts) => (
-              <TabsContent key={grouped.category} value={grouped.category}>
-                <Carousel>
-                  <CarouselContent>
-                    {grouped.items.map((item) => (
-                      <CarouselItem
-                        key={item.name}
-                        className="md:basis-1/2 lg:basis-1/4 my-2"
-                      >
-                        <ProductCard
-                          key={item.name}
-                          name={item.name}
-                          price={item.amount}
-                          imageUrl={item.imageUrl}
-                        />
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  <CustomControls />
-                </Carousel>
-              </TabsContent>
-            ))}
-          </Tabs>
-        </div>
-      </section>
-
       <div className="container mx-auto py-10">
+        <AddProduct />
         <DataTable columns={columns} data={Products} />
       </div>
     </>
