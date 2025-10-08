@@ -1,4 +1,3 @@
-"use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -25,6 +24,7 @@ import { categories } from "@/lib/categories";
 import { useEffect, useState } from "react";
 import { ProductOptions } from "@/lib/types/types";
 import { X } from "lucide-react";
+import ProductGallery from "./product-gallery";
 
 interface AddProduct {
   id?: number;
@@ -40,7 +40,7 @@ export function AddProduct() {
     category_id: 0,
     description: "",
     productGallery: [],
-    options: { prices: [{ id: 0, label: "", price: 0 }] },
+    options: { prices: [{ id: 1, label: "", price: 0 }] },
   });
 
   const addNewField = () => {
@@ -55,8 +55,6 @@ export function AddProduct() {
       },
     }));
   };
-
-  useEffect(() => console.log("hello", newProduct), [newProduct]);
 
   return (
     <Sheet>
@@ -155,7 +153,14 @@ export function AddProduct() {
                 </div>
               </div>
             ))}
-            <Button onClick={addNewField}>Add New Field</Button>
+            <Button onClick={addNewField} variant="outline">
+              Add New Field
+            </Button>
+          </div>
+
+          <div className="grid gap-3">
+            <Label htmlFor="sheet-demo-name">Product Gallery</Label>
+            <ProductGallery />
           </div>
         </div>
         <SheetFooter>
