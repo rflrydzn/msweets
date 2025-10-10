@@ -5,7 +5,7 @@ import { Product, GroupedProducts, FlattenedProduct } from "../types/types";
 const fetchProducts = async (): Promise<FlattenedProduct[]> => {
   const { data, error } = await supabase
     .from("products")
-    .select("id, name, price, image_url, categories(name), options")
+    .select("id, name, image_url, categories(name), options")
     .returns<Product[]>();
 
   if (error) {
@@ -21,9 +21,10 @@ const fetchProducts = async (): Promise<FlattenedProduct[]> => {
     return {
       id: item.id,
       name: item.name,
-      price: lowestPrice,
+      // price: lowestPrice,
       image_url: item.image_url,
       category: item.categories?.name ?? "Uncategorized",
+      options: item.options ?? {},
     };
   });
 };

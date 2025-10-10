@@ -9,7 +9,7 @@
 export type Product = {
   id: number;
   name: string;
-  price: number;
+  // price: number;
   image_url: string;
   categories: { name: string };
   options: ProductOptions;
@@ -17,7 +17,7 @@ export type Product = {
 
 export type AddProduct = {
   name: string;
-  price: number;
+  // price: number;
   description: string;
   category_id: number;
   options: ProductOptions;
@@ -37,10 +37,11 @@ export type GroupedProducts = {
 export type FlattenedProduct = {
   id: number;
   name: string;
-  price: number;
+  // price?: number;
   image_url: string;
   category: string;
-  options?: PriceOption;
+  options?: ProductOptions;
+  photoGallery?: string[];
 };
 
 export type Categories = {
@@ -52,7 +53,7 @@ export type Categories = {
 export type ProductInfo = {
   id: number;
   name: string;
-  price: number;
+  // price: number;
   image_url: string;
   description: string;
   category_id: number;

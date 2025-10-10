@@ -85,7 +85,6 @@ export function AddProduct() {
     insertProduct.mutate({
       name: newProduct.name,
       category_id: newProduct.category_id,
-      price: 0,
       description: newProduct.description,
       options: newProduct.options,
       productGallery: filteredUrls.length ? filteredUrls : [""],

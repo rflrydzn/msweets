@@ -52,19 +52,13 @@ function ManageContent() {
   const { data: groupedProducts = [], isLoading } = useFetchProducts();
   const [file, setFile] = useState<File | null>();
   const [fileUploading, setFileUploading] = useState(false);
-  const [addProduct, setAddProduct] = useState({
-    name: "",
-    description: "",
-    price: "",
-    image_url: "",
-    category: 1,
-  });
-
-  const categories = [
-    { id: 1, name: "Cake & Cup Treats" },
-    { id: 2, name: "Bars & Bites" },
-    { id: 3, name: "Pinoy Favorites" },
-  ];
+  // const [addProduct, setAddProduct] = useState({
+  //   name: "",
+  //   description: "",
+  //   price: "",
+  //   image_url: "",
+  //   category: 1,
+  // });
 
   const uploadImageToBucketAndGetUrl = async () => {
     if (!file) return null;
@@ -111,24 +105,24 @@ function ManageContent() {
     }
   };
 
-  const addNewProductRow = async (publicUrl: string) => {
-    const { error } = await supabase.from("products").insert({
-      name: addProduct.name,
-      price: Number(addProduct.price),
-      image_url: publicUrl,
-      category_id: addProduct.category,
-    });
-    if (error) {
-      console.log("Error: ", error);
-    }
-    console.log("new product added successfully");
-  };
+  // const addNewProductRow = async (publicUrl: string) => {
+  //   const { error } = await supabase.from("products").insert({
+  //     name: addProduct.name,
+  //     price: Number(addProduct.price),
+  //     image_url: publicUrl,
+  //     category_id: addProduct.category,
+  //   });
+  //   if (error) {
+  //     console.log("Error: ", error);
+  //   }
+  //   console.log("new product added successfully");
+  // };
 
-  const handleSubmit = async () => {
-    const publicUrl = await uploadImageToBucketAndGetUrl();
-    if (!publicUrl) return;
-    await addNewProductRow(publicUrl);
-  };
+  // const handleSubmit = async () => {
+  //   const publicUrl = await uploadImageToBucketAndGetUrl();
+  //   if (!publicUrl) return;
+  //   await addNewProductRow(publicUrl);
+  // };
 
   return (
     <>

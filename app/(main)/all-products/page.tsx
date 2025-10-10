@@ -22,6 +22,7 @@ import {
 import { ArrowUpDown, X } from "lucide-react";
 import Link from "next/link";
 import { categories } from "@/lib/categories";
+import { getLowestPrice } from "@/lib/getLowestPrice";
 
 type Filters = {
   categories: string[];
@@ -63,17 +64,25 @@ function AllProducts() {
   };
 
   useEffect(() => {
-    if (Products && Products.length > 0) {
-      const prices = Products.map((p) => p.price);
-      const min = Math.min(...prices);
-      const max = Math.max(...prices);
-      setFilters((prev) => ({
-        ...prev,
-        minPrice: min,
-        maxPrice: max,
-      }));
-      setSelectedMinPrice(min);
-      setSelectedMaxPrice(max);
+    if (Products?.length) {
+      const allPrices = Products.map((item) => {
+        const prices = item.options?.prices?.map((p) => p.price) ?? [];
+        return prices.length > 0 ? Math.min(...prices) : null;
+      }).filter((p): p is number => p !== null);
+
+      if (allPrices.length > 0) {
+        const min = Math.min(...allPrices);
+        const max = Math.max(...allPrices);
+
+        setFilters((prev) => ({
+          ...prev,
+          minPrice: min,
+          maxPrice: max,
+        }));
+
+        setSelectedMinPrice(min);
+        setSelectedMaxPrice(max);
+      }
     }
   }, [Products]);
 
@@ -82,19 +91,31 @@ function AllProducts() {
       filters.categories.length === 0 ||
       filters.categories.includes(product.category);
     const matchesPrice =
-      product.price >= selectedMinPrice && product.price <= selectedMaxPrice;
+      getLowestPrice(product.options?.prices) >= selectedMinPrice &&
+      getLowestPrice(product.options?.prices) <= selectedMaxPrice;
     return matchesCategory && matchesPrice;
   });
 
   const sortedProducts = filteredProducts?.sort((a, b) => {
     if (sortOrder === "ascending") {
-      return a.price - b.price;
+      return (
+        getLowestPrice(a.options?.prices) - getLowestPrice(b.options?.prices)
+      );
     } else if (sortOrder === "descending") {
-      return b.price - a.price;
+      return (
+        getLowestPrice(b.options?.prices) - getLowestPrice(a.options?.prices)
+      );
     }
     return 0;
   });
-
+  useEffect(() => {
+    if (Products) {
+      console.log(
+        "🔍 Product options:",
+        Products.map((p) => p)
+      );
+    }
+  }, [Products]);
   return (
     <div className="max-w-7xl mx-auto space-y-5 my-12">
       {/* <Breadcrumb>
@@ -229,7 +250,7 @@ function AllProducts() {
               <Link key={product.id} href={`/all-products/${product.id}`}>
                 <ProductCard
                   name={product.name}
-                  price={product.price}
+                  price={getLowestPrice(product.options?.prices)}
                   imageUrl={product.image_url}
                 />
               </Link>

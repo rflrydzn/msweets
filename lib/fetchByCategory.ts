@@ -25,7 +25,7 @@ export const fetchRecommendedProducts = async (
 
     const { data: bestSellersFallback, error } = await supabase
       .from("products")
-      .select("id, name, price, image_url, categories(name)")
+      .select("id, name,  image_url, categories(name)")
       .eq("category_id", 1)
       .limit(remaining)
       .returns<Product[]>();
@@ -39,7 +39,7 @@ export const fetchRecommendedProducts = async (
   return products.map((item) => ({
     id: item.id,
     name: item.name,
-    price: item.price,
+    // price: item.price,
     image_url: item.image_url,
     category: item.categories?.name ?? "Uncategorized", // flatten
   }));
