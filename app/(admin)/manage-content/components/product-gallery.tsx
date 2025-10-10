@@ -1,8 +1,9 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-function ProductGallery() {
+function ProductGallery({ onChange }: { onChange: (urls: string[]) => void }) {
   const [gallery, setGallery] = useState<string[]>([""]);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -12,6 +13,7 @@ function ProductGallery() {
 
     const fileUrls = Array.from(files).map((p) => URL.createObjectURL(p));
     setGallery((prev) => [...prev, ...fileUrls]);
+    onChange(fileUrls);
   };
 
   return (

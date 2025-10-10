@@ -12,12 +12,10 @@ const fetchProducts = async (): Promise<GroupedProducts[]> => {
     console.error("Error", error);
     return [];
   }
-  console.log("data", data);
   // group products by category
   const grouped: Record<string, GroupedProducts["items"]> = {};
 
   data?.forEach((p) => {
-    console.log("categories field:", p.categories);
     const category = p.categories?.name ?? "Uncategorized";
     if (!grouped[category]) {
       grouped[category] = [];

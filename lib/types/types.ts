@@ -17,8 +17,10 @@ export type Product = {
 export type AddProduct = {
   name: string;
   price: number;
-  image_url: string | null;
+  description: string;
   category_id: number;
+  options: ProductOptions;
+  productGallery: string[];
 };
 
 export type GroupedProducts = {

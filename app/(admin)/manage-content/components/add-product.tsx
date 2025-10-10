@@ -21,10 +21,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { categories } from "@/lib/categories";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { ProductOptions } from "@/lib/types/types";
-import { X } from "lucide-react";
-import ProductGallery from "./product-gallery";
+import { Plus } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
+import { getPublicURL } from "@/lib/getPublicUrl";
+import { useAddProduct } from "@/lib/hooks/useInsertProduct";
 
 interface AddProduct {
   id?: number;
@@ -35,6 +37,9 @@ interface AddProduct {
   productGallery: string[];
 }
 export function AddProduct() {
+  const [files, setFiles] = useState<File[]>([]);
+  const [previews, setPreviews] = useState<string[]>([""]);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [newProduct, setNewProduct] = useState<AddProduct>({
     name: "",
     category_id: 0,
@@ -42,6 +47,7 @@ export function AddProduct() {
     productGallery: [],
     options: { prices: [{ id: 1, label: "", price: 0 }] },
   });
+  const insertProduct = useAddProduct();
 
   const addNewField = () => {
     setNewProduct((prev) => ({
@@ -56,6 +62,36 @@ export function AddProduct() {
     }));
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFiles = e.target.files;
+    if (!selectedFiles) return;
+
+    const newFiles = Array.from(selectedFiles);
+    const fileUrls = newFiles.map((file) => URL.createObjectURL(file));
+
+    setFiles((prev) => [...prev, ...newFiles]);
+    setPreviews((prev) => [...prev, ...fileUrls]);
+  };
+
+  const handleUpload = async () => {
+    const publicUrls = await Promise.all(
+      files.map((file) => getPublicURL(file))
+    );
+
+    const filteredUrls = publicUrls.filter((url): url is string =>
+      Boolean(url)
+    );
+
+    insertProduct.mutate({
+      name: newProduct.name,
+      category_id: newProduct.category_id,
+      price: 0,
+      description: newProduct.description,
+      options: newProduct.options,
+      productGallery: filteredUrls.length ? filteredUrls : [""],
+    });
+  };
+
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -68,10 +104,17 @@ export function AddProduct() {
             Make changes to your profile here. Click save when you&apos;re done.
           </SheetDescription>
         </SheetHeader>
-        <div className="grid flex-1 auto-rows-min gap-6 px-4">
+        <div className="grid flex-1 auto-rows-min gap-6 px-4 overflow-y-auto">
           <div className="grid gap-3">
             <Label htmlFor="sheet-demo-name">Name</Label>
-            <Input id="sheet-demo-name" defaultValue="Pedro Duarte" />
+            <Input
+              id="sheet-demo-name"
+              placeholder="Product Name"
+              value={newProduct.name}
+              onChange={(e) =>
+                setNewProduct((prev) => ({ ...prev, name: e.target.value }))
+              }
+            />
           </div>
           <div className="grid gap-3">
             <Label htmlFor="sheet-demo-username">Category</Label>
@@ -100,6 +143,20 @@ export function AddProduct() {
                 </SelectGroup>
               </SelectContent>
             </Select>
+          </div>
+
+          <div className="grid gap-3">
+            <Label htmlFor="sheet-demo-username">Description</Label>
+            <Textarea
+              placeholder="Enter your product description"
+              value={newProduct.description}
+              onChange={(e) =>
+                setNewProduct((prev) => ({
+                  ...prev,
+                  description: e.target.value,
+                }))
+              }
+            />
           </div>
           <div className="grid gap-3">
             <Label htmlFor="sheet-demo-username">Price</Label>
@@ -160,11 +217,31 @@ export function AddProduct() {
 
           <div className="grid gap-3">
             <Label htmlFor="sheet-demo-name">Product Gallery</Label>
-            <ProductGallery />
+            <div className="grid grid-cols-4 justify-start">
+              {previews.map((g, i) => (
+                <div key={i}>{g && <img src={g} />}</div>
+              ))}
+
+              <input
+                type="file"
+                className="hidden"
+                ref={fileInputRef}
+                onChange={(e) => handleFileChange(e)}
+              />
+
+              <Button
+                variant="outline"
+                onClick={() => fileInputRef.current?.click()}
+              >
+                <Plus />
+              </Button>
+            </div>
           </div>
         </div>
         <SheetFooter>
-          <Button type="submit">Save changes</Button>
+          <Button type="submit" onClick={handleUpload}>
+            Save changes
+          </Button>
           <SheetClose asChild>
             <Button variant="outline">Close</Button>
           </SheetClose>
