@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ArrowUpDown, X } from "lucide-react";
 import Link from "next/link";
-import { categories } from "@/lib/categories";
+import { categories, LOGO_URL } from "@/lib/constants";
 import { getLowestPrice } from "@/lib/getLowestPrice";
 
 type Filters = {
@@ -251,7 +251,7 @@ function AllProducts() {
                 <ProductCard
                   name={product.name}
                   price={getLowestPrice(product.options?.prices)}
-                  imageUrl={product.image_url}
+                  imageUrl={product.productGallery?.[0] ?? LOGO_URL}
                 />
               </Link>
             ))}

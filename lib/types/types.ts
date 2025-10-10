@@ -13,6 +13,7 @@ export type Product = {
   image_url: string;
   categories: { name: string };
   options: ProductOptions;
+  productGallery: string[];
 };
 
 export type AddProduct = {
@@ -41,7 +42,7 @@ export type FlattenedProduct = {
   image_url: string;
   category: string;
   options?: ProductOptions;
-  photoGallery?: string[];
+  productGallery?: string[];
 };
 
 export type Categories = {

@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
 import { fetchProductDetails } from "@/lib/fetchProductDetails";
-import { categories } from "@/lib/categories";
+import { categories } from "@/lib/constants";
 import { Heart, Share, Share2, ShoppingCart } from "lucide-react";
 import VariantSelector_Basic_Ex_04 from "@/components/variant-selector-basic";
 import ProductTabs from "@/components/product-page-section2";

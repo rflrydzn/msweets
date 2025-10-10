@@ -33,21 +33,15 @@ type EditItemProps = {
   product: FlattenedProduct;
 };
 
-const categories = [
-  { id: 1, name: "Cake & Cup Treats" },
-  { id: 2, name: "Bars & Bites" },
-  { id: 3, name: "Pinoy Favorites" },
-];
-
 export function EditItem({ product }: EditItemProps) {
   const [productInfo, setProductInfo] = useState<{
     name: string;
-    price: string | number;
+
     category: string;
     image_url: string;
   }>({
     name: product.name,
-    price: product.price,
+
     category: product.category,
     image_url: product.image_url,
   });
@@ -69,7 +63,7 @@ export function EditItem({ product }: EditItemProps) {
     updateProduct({
       id: product.id,
       name: productInfo.name,
-      price: productInfo.price,
+      // price: productInfo.price,
       file: file,
     });
     // const publicUrl = await getPublicURL(file);
@@ -122,7 +116,7 @@ export function EditItem({ product }: EditItemProps) {
               <Input
                 id="price"
                 name="price"
-                defaultValue={productInfo.price}
+                // defaultValue={productInfo.price}
                 onChange={(e) =>
                   setProductInfo((prev) => ({ ...prev, price: e.target.value }))
                 }

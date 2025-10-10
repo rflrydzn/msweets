@@ -20,7 +20,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { categories } from "@/lib/categories";
+import { categories } from "@/lib/constants";
 import { useEffect, useState, useRef } from "react";
 import { ProductOptions } from "@/lib/types/types";
 import { Plus } from "lucide-react";
