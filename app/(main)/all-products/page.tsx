@@ -1,13 +1,6 @@
 "use client";
 import ProductCard from "@/components/all-products-card";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -28,6 +21,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ArrowUpDown, X } from "lucide-react";
 import Link from "next/link";
+import { categories } from "@/lib/categories";
 
 type Filters = {
   categories: string[];
@@ -49,19 +43,6 @@ function AllProducts() {
   const [selectedMaxPrice, setSelectedMaxPrice] = useState(0);
 
   const [sortOrder, setSortOrder] = useState("default");
-
-  const categories = [
-    { id: 1, name: "Best Sellers" },
-    { id: 2, name: "Cakes" },
-    { id: 3, name: "Cupcakes" },
-    { id: 4, name: "Cookies" },
-    { id: 5, name: "Brownies" },
-    { id: 6, name: "Muffins" },
-    { id: 7, name: "Crinkles" },
-    { id: 8, name: "Dessert Bars" },
-    { id: 9, name: "Banana Loaf" },
-    { id: 10, name: "Pinoy Favorites" },
-  ];
 
   const toggleSelectCategory = (checked: boolean, category: string) => {
     setFilters((prev) => ({

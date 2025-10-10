@@ -12,6 +12,7 @@ export type Product = {
   price: number;
   image_url: string;
   categories: { name: string };
+  options: ProductOptions;
 };
 
 export type AddProduct = {
@@ -38,7 +39,8 @@ export type FlattenedProduct = {
   name: string;
   price: number;
   image_url: string;
-  category: string; // 👈 string instead of object
+  category: string;
+  options?: PriceOption;
 };
 
 export type Categories = {
