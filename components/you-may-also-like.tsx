@@ -9,6 +9,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { getLowestPrice } from "@/lib/getLowestPrice";
+import { LOGO_URL } from "@/lib/constants";
 
 async function YouMayAlsoLike({
   categoryId,
@@ -30,8 +32,8 @@ async function YouMayAlsoLike({
             <CarouselItem key={item.id} className="md:basis-1/2 lg:basis-1/4">
               <ProductCard
                 name={item.name}
-                imageUrl={item.image_url}
-                price={item.price}
+                imageUrl={item.productGallery?.[0] ?? LOGO_URL}
+                price={getLowestPrice(item.options?.prices)}
               />
             </CarouselItem>
           ))}

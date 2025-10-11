@@ -39,7 +39,7 @@ export type FlattenedProduct = {
   id: number;
   name: string;
   // price?: number;
-  image_url: string;
+  // image_url: string;
   category: string;
   options?: ProductOptions;
   productGallery?: string[];
