@@ -1,12 +1,9 @@
-"use client";
-import { supabase } from "@/lib/supabase";
 import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { useRef } from "react";
 import {
   Table,
   TableBody,
@@ -15,21 +12,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { ImageUp } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { useEffect, useState } from "react";
-import { useAddProduct } from "@/lib/hooks/useInsertProduct";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -45,87 +27,6 @@ export function DataTable<TData, TValue>({
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
-
-  const insertProduct = useAddProduct();
-  const [file, setFile] = useState<File | null>();
-  const [fileUploading, setFileUploading] = useState(false);
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const [newProduct, setNewProduct] = useState({
-    name: "",
-    price: "",
-    image_url: "",
-    category_id: 1,
-  });
-
-  const uploadImageToBucketAndGetUrl = async () => {
-    if (!file) return null;
-
-    setFileUploading(true);
-
-    try {
-      const originalName = file.name;
-      const nameWithoutExt = originalName.replace(/\.[^/.]+$/, "");
-      const jpgFileName = `${nameWithoutExt}.jpg`;
-
-      const filepath = `public/${Date.now()}-${jpgFileName}`;
-
-      let uploadFile = file;
-      if (!originalName.toLowerCase().endsWith(".jpg")) {
-        uploadFile = new File([file], jpgFileName, { type: "image/jpeg" });
-      }
-
-      const { data, error } = await supabase.storage
-        .from("images")
-        .upload(filepath, uploadFile);
-
-      if (error) {
-        console.error("Upload Error:", error);
-        throw error;
-      }
-
-      const {
-        data: { publicUrl },
-      } = supabase.storage.from("images").getPublicUrl(filepath);
-
-      console.log("Uploaded successfully", data);
-
-      return publicUrl;
-    } catch (error) {
-      console.error("Error uploading file:", error);
-      throw error;
-    } finally {
-      setFileUploading(false);
-    }
-  };
-
-  // const handleAdd = async () => {
-  //   const publicUrl = await uploadImageToBucketAndGetUrl();
-  //   insertProduct.mutate(
-  //     {
-  //       ...newProduct,
-  //       image_url: publicUrl,
-  //       price: Number(newProduct.price) || 0,
-  //     },
-  //     {
-  //       onSuccess: () => {
-  //         setNewProduct({ name: "", price: "", image_url: "", category_id: 1 });
-  //       },
-  //     }
-  //   );
-  // };
-
-  // const categories = [
-  //   { id: 1, name: "Best Sellers" },
-  //   { id: 2, name: "Cakes" },
-  //   { id: 3, name: "Cupcakes" },
-  //   { id: 4, name: "Cookies" },
-  //   { id: 5, name: "Brownies" },
-  //   { id: 6, name: "Muffins" },
-  //   { id: 7, name: "Crinkles" },
-  //   { id: 8, name: "Dessert Bars" },
-  //   { id: 9, name: "Banana Loaf" },
-  //   { id: 10, name: "Pinoy Favorites" },
-  // ];
 
   return (
     <div className="overflow-hidden rounded-md border">

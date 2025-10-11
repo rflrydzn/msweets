@@ -1,11 +1,13 @@
 import { supabase } from "@/lib/supabase";
 import { useQuery } from "@tanstack/react-query";
-import { Product, GroupedProducts, FlattenedProduct } from "../types/types";
+import { Product, FlattenedProduct } from "../types/types";
 
 const fetchProducts = async (): Promise<FlattenedProduct[]> => {
   const { data, error } = await supabase
     .from("products")
-    .select("id, name, image_url, categories(name), options, productGallery")
+    .select(
+      "id, name, description, image_url, categories(name), options, productGallery"
+    )
     .returns<Product[]>();
 
   if (error) {
@@ -21,6 +23,7 @@ const fetchProducts = async (): Promise<FlattenedProduct[]> => {
     return {
       id: item.id,
       name: item.name,
+      description: item.description,
       // price: lowestPrice,
       image_url: item.image_url,
       category: item.categories?.name ?? "Uncategorized",

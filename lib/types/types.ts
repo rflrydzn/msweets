@@ -9,6 +9,7 @@
 export type Product = {
   id: number;
   name: string;
+  description: string;
   // price: number;
   image_url: string;
   categories: { name: string };
@@ -38,6 +39,7 @@ export type GroupedProducts = {
 export type FlattenedProduct = {
   id: number;
   name: string;
+  description?: string;
   // price?: number;
   // image_url: string;
   category: string;
