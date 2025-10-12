@@ -34,6 +34,9 @@ export const fetchRecommendedProducts = async (
       console.error("Error fetching recommended", error);
     } else {
       products = [...products, ...bestSellersFallback];
+      products = products.filter(
+        (item, index, self) => index === self.findIndex((p) => p.id === item.id)
+      );
     }
   }
   return products.map((item) => ({
