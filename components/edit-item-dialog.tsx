@@ -17,6 +17,7 @@ import { useState } from "react";
 import { useRef } from "react";
 import { useUpdateProduct } from "@/lib/hooks/useUpdateProduct";
 import { Textarea } from "./ui/textarea";
+import { toast } from "sonner";
 
 type EditItemProps = {
   product: FlattenedProduct;
@@ -38,40 +39,40 @@ export function EditItem({ product }: EditItemProps) {
   });
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const [file, setFile] = useState<File | null>(null);
+  const [files, setFiles] = useState<File[]>([]);
   const [preview, setPreview] = useState<string[]>(productInfo.productGallery);
-  const { mutate: updateProduct } = useUpdateProduct();
+  const [images, setImages] = useState<{ file?: File; preview: string }[]>(() =>
+    (productInfo.productGallery ?? []).map((url) => ({ preview: url }))
+  );
+  const { mutate: updateProduct, isError, error } = useUpdateProduct();
 
-  // const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const selectedFile = e.target.files?.[0];
-  //   if (selectedFile) {
-  //     setFile(selectedFile);
-  //     setPreview(URL.createObjectURL(selectedFile));
-  //   }
-  // };
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0];
+    if (selectedFile) {
+      setImages((prev) => [
+        ...prev,
+        {
+          file: selectedFile,
+          preview: URL.createObjectURL(selectedFile),
+        },
+      ]);
+    }
+  };
 
   const handleSave = async () => {
     updateProduct({
       id: product.id,
       name: productInfo.name,
-      // price: productInfo.price,
-      file: file,
+      description: productInfo.description,
+      options: productInfo.options,
+      images: images,
     });
-    // const publicUrl = await getPublicURL(file);
-    // const { error } = await supabase
-    //   .from("products")
-    //   .update({
-    //     name: productInfo.name,
-    //     price: Number(productInfo.price),
-    //     image_url: publicUrl,
-    //   })
-    //   .eq("id", product.id);
 
-    // if (error) {
-    //   toast.error("Error updating product");
-    // } else {
-    //   toast.success(`Successfully Updated Product ID: ${product.id}`);
-    // }
+    if (isError) {
+      toast.error(`Error updating product: ${error}`);
+    } else {
+      toast.success(`Successfully Updated Product ID: ${product.id}`);
+    }
   };
 
   return (
@@ -166,17 +167,18 @@ export function EditItem({ product }: EditItemProps) {
             <div className="grid gap-3">
               <Label>Product Gallery</Label>
               <div className="grid grid-cols-4 gap-3">
-                {preview.map((image, index) => (
+                {images.map((image, index) => (
                   <div
-                    key={image}
+                    key={index}
                     className="relative aspect-square overflow-hidden rounded-2xl group"
                   >
-                    <img src={image} className="object-cover w-full h-full" />
+                    <img
+                      src={image.preview}
+                      className="object-cover w-full h-full"
+                    />
                     <button
                       onClick={() => {
-                        setPreview((prev) =>
-                          prev.filter((_, i) => i !== index)
-                        );
+                        setImages((prev) => prev.filter((_, i) => i !== index));
                       }}
                       className="absolute -top-0 -right-0 w-7 h-7 bg-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     >
@@ -184,7 +186,17 @@ export function EditItem({ product }: EditItemProps) {
                     </button>
                   </div>
                 ))}
-                <Button>
+                <input
+                  type="file"
+                  className="hidden"
+                  ref={fileInputRef}
+                  onChange={handleImageChange}
+                />
+                <Button
+                  onClick={() => {
+                    fileInputRef.current?.click();
+                  }}
+                >
                   <Plus />
                 </Button>
               </div>
