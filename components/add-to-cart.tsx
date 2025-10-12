@@ -7,7 +7,7 @@ interface CartItem {
   id: number;
   name: string;
   image_url: string;
-  price: number;
+  // price: number;
   quantity: number;
   option: { id: number; label: string; price: number };
   variant?: string;

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
 interface CartItem {
-  id: number; // unique id (product + variant)
+  id: number;
   name: string;
   image_url: string;
-  price: number;
+  // price: number;
   option: { id: number; label: string; price: number };
   quantity: number;
   variant?: string;
@@ -19,6 +19,7 @@ export function useCart() {
     }
     return [];
   });
+  const [isHydrated, setIsHydrated] = useState(false);
 
   const addToCart = (CartItem: CartItem) => {
     setCart((prev) => {
@@ -35,8 +36,18 @@ export function useCart() {
   };
 
   useEffect(() => {
-    localStorage.setItem("myCart", JSON.stringify(cart));
-  }, [cart]);
+    const storedData = localStorage.getItem("myCart");
+    if (storedData) {
+      setCart(JSON.parse(storedData));
+    }
+    setIsHydrated(true);
+  }, []);
 
-  return { cart, addToCart };
+  useEffect(() => {
+    if (isHydrated) {
+      localStorage.setItem("myCart", JSON.stringify(cart));
+    }
+  }, [cart, isHydrated]);
+
+  return { cart, addToCart, isHydrated };
 }

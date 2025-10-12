@@ -27,8 +27,7 @@ export default function VariantSelector_Basic_Ex_04({
   const CartItemInfo = {
     id: productInfo.id,
     name: productInfo.name,
-    image_url: productInfo.image_url,
-    price: productInfo.price,
+    image_url: productInfo.productGallery[0],
     quantity: quantity,
     option: productInfo.options?.prices[Number(selectedOptionIndex)] ?? {
       id: 0,
@@ -36,7 +35,6 @@ export default function VariantSelector_Basic_Ex_04({
       price: 0,
     },
   };
-  console.log("info", CartItemInfo);
   return (
     <div className="space-y-8">
       <div className=" bg-white  dark:border-gray-800 dark:bg-gray-900">
