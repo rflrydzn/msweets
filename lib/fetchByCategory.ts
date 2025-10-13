@@ -49,3 +49,18 @@ export const fetchRecommendedProducts = async (
     category: item.categories?.name ?? "Uncategorized", // flatten
   }));
 };
+
+export const fetchBestSellers = async () => {
+  const { data, error } = await supabase
+    .from("products")
+    .select("id, name, options, productGallery")
+    .eq("category_id", 1)
+    .limit(4)
+    .returns<Product[]>();
+
+  if (error) {
+    console.error("Error fetching recommended products", error);
+  }
+
+  return data ?? [];
+};

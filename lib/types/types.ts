@@ -79,3 +79,15 @@ export interface PriceOption {
 export interface ProductOptions {
   prices: PriceOption[];
 }
+
+export interface CartItem {
+  id: number;
+  name: string;
+  image_url: string;
+  // price: number;
+  quantity: number;
+  option: { id: number; label: string; price: number };
+  variant?: string;
+  category?: string;
+  selected?: true | false;
+}

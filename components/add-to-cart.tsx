@@ -1,18 +1,7 @@
 import { useCart } from "@/lib/hooks/useCart";
 import { Button } from "./ui/button";
 import { ShoppingCart } from "lucide-react";
-import { useEffect } from "react";
-
-interface CartItem {
-  id: number;
-  name: string;
-  image_url: string;
-  // price: number;
-  quantity: number;
-  option: { id: number; label: string; price: number };
-  variant?: string;
-  category?: string;
-}
+import { CartItem } from "@/lib/types/types";
 
 function AddToCart({ CartItem }: { CartItem: CartItem }) {
   const { addToCart } = useCart();

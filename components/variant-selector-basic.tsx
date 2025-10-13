@@ -34,6 +34,7 @@ export default function VariantSelector_Basic_Ex_04({
       label: "",
       price: 0,
     },
+    selected: true,
   };
   return (
     <div className="space-y-8">

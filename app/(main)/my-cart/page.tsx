@@ -1,32 +1,16 @@
-"use client";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Separator } from "@/components/ui/separator";
 import { useCart } from "@/lib/hooks/useCart";
+import { Button } from "@/components/ui/button";
+import RecommendedProducts from "./components/recommended-products";
+import CartClient from "./components/cart-client";
 
-function MyCart() {
-  const { cart, isHydrated } = useCart();
-
-  if (!isHydrated) return <div>Loading...</div>;
-
+async function MyCart() {
   return (
-    <div>
-      <h2>Basket</h2>
-      {cart?.map((product) => (
-        <div
-          key={product.name}
-          className="max-w-7xl flex flex-col justify-between md:flex-row "
-        >
-          <div className="flex">
-            <img src={product.image_url} className="aspect-square w-15" />
-            <div>
-              <h2>{product.name}</h2>
-              <span className="text-brand-gray">{product.option.label}</span>
-            </div>
-          </div>
-          <div>
-            P {product.option.price * product.quantity} <Checkbox />
-          </div>
-        </div>
-      ))}
+    <div className="max-w-7xl mx-auto">
+      <h1 className="font-times font-medium lg:text-2xl my-5">Basket</h1>
+      <CartClient />
+      <RecommendedProducts />
     </div>
   );
 }
