@@ -31,7 +31,7 @@ export type GroupedProducts = {
   items: {
     id?: number;
     name: string;
-    amount: number;
+    // amount: number;
     imageUrl: string;
   }[];
 };

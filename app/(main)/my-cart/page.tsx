@@ -1,7 +1,3 @@
-import { Checkbox } from "@/components/ui/checkbox";
-import { Separator } from "@/components/ui/separator";
-import { useCart } from "@/lib/hooks/useCart";
-import { Button } from "@/components/ui/button";
 import RecommendedProducts from "./components/recommended-products";
 import CartClient from "./components/cart-client";
 

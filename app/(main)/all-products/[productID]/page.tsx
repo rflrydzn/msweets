@@ -17,9 +17,10 @@ import ProductGallery from "@/components/image-gallery";
 export default async function ProductPage({
   params,
 }: {
-  params: { productID: number };
+  params: Promise<{ productID: string }>;
 }) {
-  const productInfo = await fetchProductDetails(params.productID);
+  const { productID } = await params;
+  const productInfo = await fetchProductDetails(Number(productID));
   const category = categories.find((cat) => cat.id === productInfo.category_id);
 
   if (!productInfo) {

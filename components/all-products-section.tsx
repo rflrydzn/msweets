@@ -19,39 +19,38 @@ import { useFetchProducts } from "@/lib/hooks/useFetchGroupedProducts";
 import { GroupedProducts, Product } from "@/lib/types/types";
 import Link from "next/link";
 
-type ButtonGroupProps = {
-  next?: () => void;
-  previous?: () => void;
-  carouselState?: { currentSlide: number };
-};
+// type ButtonGroupProps = {
+//   next?: () => void;
+//   previous?: () => void;
+//   carouselState?: { currentSlide: number };
+// };
 
-function CustomControls() {
-  const { scrollNext, canScrollNext, scrollPrev, canScrollPrev } =
-    useCarousel();
+// function CustomControls() {
+//   const { scrollNext, canScrollNext, scrollPrev, canScrollPrev } =
+//     useCarousel();
 
-  return (
-    <div className="flex items-center gap-4 mt-4 justify-center">
-      <Button
-        onClick={scrollPrev}
-        disabled={!canScrollPrev}
-        className="p-1 text-white rounded-full border-brand-pink border bg-white"
-      >
-        <ChevronLeft className="text-brand-orange" />
-      </Button>
-      <Button
-        onClick={scrollNext}
-        disabled={!canScrollNext}
-        className="p-1 text-white rounded-full border-brand-pink border bg-white"
-      >
-        <ChevronRight className="text-brand-orange " />
-      </Button>
-    </div>
-  );
-}
+//   return (
+//     <div className="flex items-center gap-4 mt-4 justify-center">
+//       <Button
+//         onClick={scrollPrev}
+//         disabled={!canScrollPrev}
+//         className="p-1 text-white rounded-full border-brand-pink border bg-white"
+//       >
+//         <ChevronLeft className="text-brand-orange" />
+//       </Button>
+//       <Button
+//         onClick={scrollNext}
+//         disabled={!canScrollNext}
+//         className="p-1 text-white rounded-full border-brand-pink border bg-white"
+//       >
+//         <ChevronRight className="text-brand-orange " />
+//       </Button>
+//     </div>
+//   );
+// }
 
 function AllProducts() {
-  const { data: groupedProducts = [], isLoading } = useFetchProducts();
-  useEffect(() => console.log(groupedProducts));
+  // const { data: groupedProducts = [], isLoading } = useFetchProducts();
   // const ButtonGroup: React.FC<ButtonGroupProps> = ({
   //   next,
   //   previous,
@@ -82,13 +81,12 @@ function AllProducts() {
   // };
   return (
     <section className="flex flex-col items-center p-16 gap-6">
-      <h1 className="text-brand-orange font-dream md:text-3xl lg:text-3xl">
+      {/* <h1 className="text-brand-orange font-dream md:text-3xl lg:text-3xl">
         All Products
       </h1>
 
       <div className="flex w-full flex-col ">
         <Tabs defaultValue="Cakes">
-          {/* ✅ All triggers go in a single TabsList */}
           <TabsList>
             {groupedProducts.map((grouped: GroupedProducts) => (
               <TabsTrigger key={grouped.category} value={grouped.category}>
@@ -97,7 +95,6 @@ function AllProducts() {
             ))}
           </TabsList>
 
-          {/* ✅ Render one TabsContent per category */}
           {groupedProducts.map((grouped) => (
             <TabsContent key={grouped.category} value={grouped.category}>
               <Carousel>
@@ -128,7 +125,7 @@ function AllProducts() {
             </Button>
           </Link>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }

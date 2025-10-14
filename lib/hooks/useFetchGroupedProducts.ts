@@ -23,7 +23,7 @@ const fetchProducts = async (): Promise<GroupedProducts[]> => {
     grouped[category].push({
       id: p.id,
       name: p.name,
-      amount: p.price,
+      // amount: p.price,
       imageUrl: p.image_url,
     });
   });

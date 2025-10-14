@@ -1,6 +1,4 @@
 import { fetchRecommendedProducts } from "@/lib/fetchByCategory";
-import { useFetchProducts } from "@/lib/hooks/useFetchGroupedProducts";
-import { useEffect } from "react";
 import ProductCard from "./all-products-card";
 import {
   Carousel,
