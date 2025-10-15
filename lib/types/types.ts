@@ -91,3 +91,15 @@ export interface CartItem {
   category?: string;
   selected?: true | false;
 }
+
+export type BillingInfo = {
+  name: string;
+  email: string;
+  surname: string;
+  phoneNumber: number;
+  province: string;
+  city: string;
+  address: string;
+  paymentMethod: "Cash" | "G-Cash";
+  comment?: string;
+};

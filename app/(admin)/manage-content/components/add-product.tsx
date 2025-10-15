@@ -27,6 +27,7 @@ import { Plus } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { getPublicURL } from "@/lib/getPublicUrl";
 import { useAddProduct } from "@/lib/hooks/useInsertProduct";
+import { toast } from "sonner";
 
 interface AddProduct {
   id?: number;
@@ -89,6 +90,19 @@ export function AddProduct() {
       options: newProduct.options,
       productGallery: filteredUrls.length ? filteredUrls : [""],
     });
+
+    setNewProduct({
+      name: "",
+      category_id: 0,
+      description: "",
+      productGallery: [],
+      options: { prices: [{ id: 1, label: "", price: 0 }] },
+    });
+
+    setPreviews([""]);
+    setFiles([]);
+
+    toast.success("Successfully added new product");
   };
 
   return (
@@ -238,9 +252,11 @@ export function AddProduct() {
           </div>
         </div>
         <SheetFooter>
-          <Button type="submit" onClick={handleUpload}>
-            Save changes
-          </Button>
+          <SheetClose asChild>
+            <Button type="submit" onClick={handleUpload}>
+              Save changes
+            </Button>
+          </SheetClose>
           <SheetClose asChild>
             <Button variant="outline">Close</Button>
           </SheetClose>
