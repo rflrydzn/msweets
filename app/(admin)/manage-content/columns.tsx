@@ -56,10 +56,10 @@ export const columns: ColumnDef<FlattenedProduct>[] = [
     header: "price",
   },
   {
-    accessorKey: "image_url",
+    accessorKey: "productGallery",
     header: "Image",
     cell: ({ row }) => {
-      const url = row.getValue("image_url") as string;
+      const url = row.getValue("productGallery") as string;
       return (
         <img
           src={url}
