@@ -5,7 +5,7 @@ export const fetchProductDetails = async (id: number): Promise<ProductInfo> => {
   const { data, error } = await supabase
     .from("products")
     .select(
-      "id, name, price, image_url, description, category_id, options, productGallery"
+      "id, name, image_url, description, category_id, options, productGallery"
     )
     .eq("id", id)
     .single();
