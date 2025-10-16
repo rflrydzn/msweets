@@ -17,7 +17,8 @@ import {
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import type { ComponentProps } from "react";
-import Logo from "@/public/msweets-logo.png";
+import Logo from "@/public/logo-5.svg";
+import LogoOrange from "@/public/logo-orange.svg";
 import Image from "next/image";
 import Cart from "@/public/cart-icon.png";
 import { Search } from "lucide-react";
@@ -230,7 +231,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
                 className="hidden  md:flex items-center space-x-2 text-primary hover:text-primary/90 transition-colors cursor-pointer"
               >
                 <Image
-                  src={Logo}
+                  src={pathname !== "/" ? LogoOrange : Logo}
                   alt="logo"
                   className="w-10 md:w-20 lg:w-20 2xl:w-25"
                 />

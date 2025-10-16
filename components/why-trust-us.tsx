@@ -21,7 +21,7 @@ function WhyTrustUs() {
       <h1 className="text-brand-orange font-dream md:text-3xl lg:text-3xl lg:py-7">
         Why Trust Us
       </h1>
-      <div className="flex md:gap-10 md:mx-10 lg:gap-20 items-center justify-center pt-12 pb-32">
+      <div className="flex flex-col md:flex-row md:gap-10 md:mx-10 lg:gap-20 items-center justify-center pt-12 pb-32">
         {Reasons.map((e) => {
           const Icon = e.logo;
           return (
