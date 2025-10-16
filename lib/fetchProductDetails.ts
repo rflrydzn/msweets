@@ -10,6 +10,5 @@ export const fetchProductDetails = async (id: number): Promise<ProductInfo> => {
     .eq("id", id)
     .single();
   if (error) throw new Error("Failed fetching product details");
-  console.log("product details", data);
   return data;
 };

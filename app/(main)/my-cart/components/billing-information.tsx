@@ -1,5 +1,9 @@
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { PhilippinePeso } from "lucide-react";
+import GCash from "@/public/GCash.svg";
 import { useState, useEffect } from "react";
 import { City, fetchProvinces } from "@/lib/fetchProvinces";
 import {
@@ -12,6 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { BillingInfo } from "@/lib/types/types";
+import { Textarea } from "@/components/ui/textarea";
 
 type Province = {
   code: string;
@@ -164,7 +169,57 @@ export default function BillingInformation({
         <h2 className="text-xl font-bold mb-6 text-gray-800 ">
           Payment Methods
         </h2>
+        <div className="flex gap-3">
+          <div className="flex flex-col justify-center items-center">
+            <Button
+              className={`w-30 h-15 ${
+                billingInfo.paymentMethod === "Cash"
+                  ? "border-2 border-brand-orange"
+                  : " "
+              }`}
+              variant="outline"
+              onClick={() => onBillingChange({ paymentMethod: "Cash" })}
+            >
+              <PhilippinePeso strokeWidth={2.5} />
+            </Button>
+            <p
+              className={
+                billingInfo.paymentMethod === "Cash" ? "font-bold" : ""
+              }
+            >
+              Cash
+            </p>
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <Button
+              className={`w-30 h-15 ${
+                billingInfo.paymentMethod === "G-Cash"
+                  ? "border-2 border-brand-orange"
+                  : " "
+              }`}
+              variant="outline"
+              onClick={() => onBillingChange({ paymentMethod: "G-Cash" })}
+            >
+              <Image src={GCash} alt="G-Cash Payment" width={50} />
+            </Button>
+            <p
+              className={
+                billingInfo.paymentMethod === "G-Cash" ? "font-bold" : ""
+              }
+            >
+              G-Cash
+            </p>
+          </div>
+        </div>
       </section>
+      <div className="my-6 space-y-3">
+        <Label>Comment</Label>
+        <Textarea
+          placeholder="Type your message here."
+          value={billingInfo.comment}
+          onChange={(e) => onBillingChange({ comment: e.target.value })}
+        />
+      </div>
     </>
   );
 }
