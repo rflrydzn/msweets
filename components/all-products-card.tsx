@@ -18,7 +18,7 @@ function ProductCard({
       </div>
 
       {/* Text */}
-      <div className="p-4 flex justify-between">
+      <div className="p-4 flex justify-between bg-white">
         <div>
           <h3 className="font-bold">{name}</h3>
           <p className="text-brand-gray">
