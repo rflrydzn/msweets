@@ -11,7 +11,7 @@ import Image from "next/image";
 import Hero1 from "@/public/hero.png";
 import { Button } from "./ui/button";
 import { ChevronLeft, ChevronLeftCircle, ChevronRight } from "lucide-react";
-import Donut from "@/public/donut.png";
+import Donut from "@/public/cpcake.png";
 import Cookie from "@/public/cake.png";
 import { motion } from "framer-motion";
 
@@ -56,9 +56,9 @@ const CustomDot = ({ onClick, active }: DotProps) => {
 const slides = [
   {
     title: "Discover the sweetness",
-    subtitle: "of Donuts",
+    subtitle: "of Cupcakes",
     description:
-      "Donuts come in different shapes, including the classic ring shape, filled donuts, donut holes (or munchkins), twists, and more. The ring-shaped donut is the most iconic.",
+      "Cupcakes come in different styles, including the classic frosted swirl, filled cupcakes, mini cupcakes, themed designs, and more. The frosted cupcake is the most iconic.",
     image: Donut,
   },
   {
