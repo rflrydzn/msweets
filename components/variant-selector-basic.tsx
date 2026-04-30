@@ -38,7 +38,7 @@ export default function VariantSelector_Basic_Ex_04({
   };
   return (
     <div className="space-y-8">
-      <div className=" bg-white  dark:border-gray-800 dark:bg-gray-900">
+      <div className="  dark:border-gray-800 dark:bg-gray-900">
         <div className="space-y-2">
           <Label className="text-sm  font-bold text-gray-700 dark:text-gray-300">
             Size

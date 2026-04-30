@@ -79,10 +79,8 @@ export interface Navbar04Props extends React.HTMLAttributes<HTMLElement> {
 }
 // Default navigation links
 const defaultNavigationLinks: Navbar04NavItem[] = [
-  { href: "#", label: "Home" },
-  { href: "#", label: "Shop" },
-  { href: "#", label: "Sale" },
-  { href: "#", label: "Blog" },
+  { href: "/", label: "Home" },
+  { href: "/all-products", label: "Shop" },
   { href: "#", label: "About Us" },
   { href: "#", label: "Contact" },
 ];
@@ -104,7 +102,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
       onSearchSubmit,
       ...props
     },
-    ref
+    ref,
   ) => {
     const [isMobile, setIsMobile] = useState(false);
     const containerRef = useRef<HTMLElement>(null);
@@ -136,7 +134,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
           ref.current = node;
         }
       },
-      [ref]
+      [ref],
     );
     const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
@@ -153,7 +151,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
           `${
             pathname !== "/" ? " relative" : "absolute"
           } top-0 z-40 w-full bg-none backdrop-blur  md:px-6 [&_*]:no-underline  lg:px-24 lg:py-6 `,
-          className
+          className,
         )}
         {...props}
       >
@@ -196,7 +194,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
                           className="bg-border -mx-1 my-1 h-px"
                         />
                       </NavigationMenuItem>
-                      <NavigationMenuItem className="w-full ">
+                      {/* <NavigationMenuItem className="w-full ">
                         <button
                           onClick={(e) => {
                             e.preventDefault();
@@ -206,7 +204,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
                         >
                           {signInText}
                         </button>
-                      </NavigationMenuItem>
+                      </NavigationMenuItem> */}
                       <NavigationMenuItem className="w-full">
                         <Button
                           size="sm"
@@ -274,7 +272,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
           {/* Right side */}
           {!isMobile && (
             <div className="flex items-center gap-3">
-              <Button
+              {/* <Button
                 variant="ghost"
                 size="sm"
                 className={`${
@@ -286,7 +284,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
                 }}
               >
                 {signInText}
-              </Button>
+              </Button> */}
               {/* <button
                 className="rounded-full bg-white text-sm font-medium p-2 shadow-sm "
                 onClick={(e) => {
@@ -310,7 +308,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
         </div>
       </header>
     );
-  }
+  },
 );
 Navbar01.displayName = "Navbar01";
 export { Logo, HamburgerIcon };

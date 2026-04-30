@@ -127,17 +127,17 @@ function AllProductsClientInner() {
       <h1 className="text-center font-dream text-3xl text-brand-orange">
         All Products
       </h1>
-      <div className="flex justify-between">
+      <div className="flex justify-between ">
         <h2 className="font-times lg:text-3xl">Filter</h2>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="text-brand-gray">
+            <Button variant="outline" className="text-brand-gray bg-[#f8f7ea]">
               <ArrowUpDown />{" "}
               {sortOrder === "ascending"
                 ? "Low to High"
                 : sortOrder === "descending"
-                ? "High to Low"
-                : "Default"}
+                  ? "High to Low"
+                  : "Default"}
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56">
@@ -230,7 +230,7 @@ function AllProductsClientInner() {
 
           <Button
             variant="outline"
-            className="text-brand-gray mt-2"
+            className="text-brand-gray mt-2 bg-[#f8f7ea]"
             onClick={clearFilters}
           >
             <X className="mr-2 h-4 w-4" />

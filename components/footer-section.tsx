@@ -77,19 +77,13 @@ function Footer() {
                 href="#"
                 className="block transition-colors hover:text-primary"
               >
+                Shop
+              </a>
+              <a
+                href="#"
+                className="block transition-colors hover:text-primary"
+              >
                 About Us
-              </a>
-              <a
-                href="#"
-                className="block transition-colors hover:text-primary"
-              >
-                Services
-              </a>
-              <a
-                href="#"
-                className="block transition-colors hover:text-primary"
-              >
-                Products
               </a>
               <a
                 href="#"
@@ -97,14 +91,20 @@ function Footer() {
               >
                 Contact
               </a>
+              {/* <a
+                href="#"
+                className="block transition-colors hover:text-primary"
+              >
+                Contact
+              </a> */}
             </nav>
           </div>
           <div>
             <h3 className="mb-4 text-lg font-semibold">Contact Us</h3>
             <address className="space-y-2 text-sm not-italic">
-              <p>123 Innovation Street</p>
-              <p>Tech City, TC 12345</p>
-              <p>Phone: (123) 456-7890</p>
+              <p>Purok 2 Barangay Macabling</p>
+              <p>Santa Rosa, Laguna, Philippines</p>
+              <p>Phone: +63 955 597 5368</p>
               <p>Email: hello@example.com</p>
             </address>
           </div>

@@ -5,27 +5,27 @@ import React from "react";
 const flowerPotCakes = [
   {
     id: 1,
-    name: "Sunflower",
+    name: "Rose Cake",
     image:
-      "https://scontent-iad6-1.xx.fbcdn.net/v/t39.30808-6/684257620_26633794482929723_3701150143731878163_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=7b2446&_nc_ohc=yN05c_iuqYIQ7kNvwHxoiev&_nc_oc=AdqDDPbVvEhtR_mh_zr0bsMNaTOEMQMWWGarv3yGttaVAPZswUgDXkjW9Hd6nTyDM_k&_nc_zt=23&_nc_ht=scontent-iad6-1.xx&_nc_gid=iNgDktVDEuVCtnTN_nM_SQ&_nc_ss=7b2a8&oh=00_Af3Peu4v9mt5RJUS4YggKSqQGvUdU-pLYhyUOaSxdgLrtg&oe=69F86803",
+      "https://scontent-iad6-1.xx.fbcdn.net/v/t39.30808-6/681048123_122276604674087050_6445827788869008420_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=e7HuAmVVKL0Q7kNvwHIabEF&_nc_oc=AdpR1oAb_u8rEC0OUDJN4wcbk8L8n92fS_88ZVFy08TYyZIxsckwQxv_wYp84mSyviA&_nc_zt=23&_nc_ht=scontent-iad6-1.xx&_nc_gid=lQj_lF7pIWEJyeqzlyGFIw&_nc_ss=7b2a8&oh=00_Af0szwLoL8whr6ScpIH_rkJXUiD2ilb0tTyf0uvEjEIKFw&oe=69F994C4",
   },
   {
     id: 2,
-    name: "Mini Lily",
+    name: "Lily Cake",
     image:
-      "https://scontent-iad6-1.xx.fbcdn.net/v/t39.30808-6/684257620_26633794482929723_3701150143731878163_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=7b2446&_nc_ohc=yN05c_iuqYIQ7kNvwHxoiev&_nc_oc=AdqDDPbVvEhtR_mh_zr0bsMNaTOEMQMWWGarv3yGttaVAPZswUgDXkjW9Hd6nTyDM_k&_nc_zt=23&_nc_ht=scontent-iad6-1.xx&_nc_gid=iNgDktVDEuVCtnTN_nM_SQ&_nc_ss=7b2a8&oh=00_Af3Peu4v9mt5RJUS4YggKSqQGvUdU-pLYhyUOaSxdgLrtg&oe=69F86803",
+      "https://scontent-iad3-1.xx.fbcdn.net/v/t39.30808-6/679378073_122276604710087050_4204387888399316373_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_ohc=35FciVwLVe8Q7kNvwEs0W5c&_nc_oc=AdpHMNvgLhNojOsDhK9KxFyLOaN1HZX4aLuHAnd4-5ScRgZOZ-44D447X1RkUaRFlS4&_nc_zt=23&_nc_ht=scontent-iad3-1.xx&_nc_gid=2WEM6KLXjzaLjLPkl3QB-w&_nc_ss=7b2a8&oh=00_Af7acPdmbtVQle92XqoHwZP0FXAZSHT7heKUx7eD2CE6cA&oe=69F98FBA",
   },
   {
     id: 3,
-    name: "Tulips",
+    name: "Tulip Cake",
     image:
-      "https://scontent-iad6-1.xx.fbcdn.net/v/t39.30808-6/684257620_26633794482929723_3701150143731878163_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=7b2446&_nc_ohc=yN05c_iuqYIQ7kNvwHxoiev&_nc_oc=AdqDDPbVvEhtR_mh_zr0bsMNaTOEMQMWWGarv3yGttaVAPZswUgDXkjW9Hd6nTyDM_k&_nc_zt=23&_nc_ht=scontent-iad6-1.xx&_nc_gid=iNgDktVDEuVCtnTN_nM_SQ&_nc_ss=7b2a8&oh=00_Af3Peu4v9mt5RJUS4YggKSqQGvUdU-pLYhyUOaSxdgLrtg&oe=69F86803",
+      "https://scontent-iad3-2.xx.fbcdn.net/v/t39.30808-6/684833488_122276604686087050_5868835869904312614_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_ohc=naecSgs_iAcQ7kNvwGd3Aol&_nc_oc=AdpWNH4wOu6ICWFyFuytW_5bXLXXfKuciRPwVw7qiI84GWz9iHtTTEEiLM4OkzBg2GE&_nc_zt=23&_nc_ht=scontent-iad3-2.xx&_nc_gid=ZxOFm2bZC8lrOtUvkVElPQ&_nc_ss=7b2a8&oh=00_Af2BcfxyMdTzPHAeC3QRJE69I13_BhQJ0tYyu6RL20J2ww&oe=69F99C44",
   },
   {
     id: 4,
-    name: "Rose",
+    name: "Sunflower Cake",
     image:
-      "https://scontent-iad6-1.xx.fbcdn.net/v/t39.30808-6/684257620_26633794482929723_3701150143731878163_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=7b2446&_nc_ohc=yN05c_iuqYIQ7kNvwHxoiev&_nc_oc=AdqDDPbVvEhtR_mh_zr0bsMNaTOEMQMWWGarv3yGttaVAPZswUgDXkjW9Hd6nTyDM_k&_nc_zt=23&_nc_ht=scontent-iad6-1.xx&_nc_gid=iNgDktVDEuVCtnTN_nM_SQ&_nc_ss=7b2a8&oh=00_Af3Peu4v9mt5RJUS4YggKSqQGvUdU-pLYhyUOaSxdgLrtg&oe=69F86803",
+      "https://scontent-iad3-2.xx.fbcdn.net/v/t39.30808-6/681418485_122276604734087050_8675254563426672987_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=Bq3SHclwj1UQ7kNvwEXOESW&_nc_oc=AdpqWKbwhvpufoYu2UlTf692ztB9hVKnrxn1w7luWtQcKlFOe-kElYU9Nm-F-5RhgGE&_nc_zt=23&_nc_ht=scontent-iad3-2.xx&_nc_gid=rrROEX-vxqDY9rzlnJZ96Q&_nc_ss=7b2a8&oh=00_Af0Ypr0MOojKvovZ4TpRmi5mLIUz1nzCHcrSq10uuYyu7Q&oe=69F9A808",
   },
 ];
 
@@ -84,7 +84,7 @@ const MotherDayFlowersSection = () => {
             </span>
 
             <h2 className="text-5xl md:text-6xl text-[#b80049] mb-4 font-script">
-              Mother's Day Special
+              Mother&apos;s Day Special
             </h2>
 
             <p className="text-[#5b3f43] max-w-2xl mx-auto text-lg">

@@ -11,6 +11,7 @@ import Footer from "@/components/footer-section";
 import Banner from "@/components/banner";
 import ShopByCategory from "@/components/shop-by-category";
 import MotherDayFlowersSection from "@/components/featured";
+import AboutUs from "@/components/about-us";
 
 export default function Home() {
   return (
@@ -29,6 +30,7 @@ export default function Home() {
       {/* <AllProducts /> */}
       <ShopByCategory />
       <IndividualCakes />
+      <AboutUs />
       <WhyTrustUs />
     </main>
   );
