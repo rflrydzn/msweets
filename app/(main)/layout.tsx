@@ -40,9 +40,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}
       >
         <QueryProvider>
-          <Navbar01 />
-          {children}
-          <Footer />
+          <div className="bg-[#f8f7ea]">
+            <Navbar01 />
+            {children}
+            <Footer />
+          </div>
         </QueryProvider>
       </body>
     </html>

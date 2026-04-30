@@ -23,7 +23,7 @@ export default function DessertCard({
         </div>
 
         {/* Text */}
-        <div className="p-4 text-center">
+        <div className="p-4 text-center bg-white">
           <h2 className="xl:text-xl font-dream uppercase font-semibold text-[#d49690] tracking-wider py-5">
             {name}
           </h2>

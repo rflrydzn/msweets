@@ -12,7 +12,7 @@ import Hero1 from "@/public/hero.png";
 import { Button } from "./ui/button";
 import { ChevronLeft, ChevronLeftCircle, ChevronRight } from "lucide-react";
 import Donut from "@/public/donut.png";
-import Cookie from "@/public/cookie.png";
+import Cookie from "@/public/cake.png";
 import { motion } from "framer-motion";
 
 const responsive = {

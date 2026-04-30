@@ -17,7 +17,7 @@ const Reasons = [
 ];
 function WhyTrustUs() {
   return (
-    <section className="text-center">
+    <section className="text-center bg-[#f8f7ea]">
       <h1 className="text-brand-orange font-dream md:text-3xl lg:text-3xl lg:py-7">
         Why Trust Us
       </h1>

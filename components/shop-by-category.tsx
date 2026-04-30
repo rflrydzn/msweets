@@ -19,7 +19,7 @@ function ShopByCategory() {
   const { data: categories } = useFetchCategories();
   useEffect(() => console.log("cat", categories), [categories]);
   return (
-    <section className="flex flex-col items-center p-16 gap-6">
+    <section className="flex flex-col items-center p-16 gap-6 bg-[#f8f7ea]">
       <h1 className="text-brand-orange font-dream md:text-3xl lg:text-3xl">
         Shop by Category
       </h1>

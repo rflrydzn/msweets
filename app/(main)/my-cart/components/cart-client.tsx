@@ -25,7 +25,7 @@ function CartClient() {
     comment: "",
   });
 
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(1);
 
   console.log("info", billingInfo);
 
@@ -33,7 +33,7 @@ function CartClient() {
 
   const handleSelectAll = () => {
     setSelectedCart((prev) =>
-      prev.map((item) => ({ ...item, selected: !!isSelectAll }))
+      prev.map((item) => ({ ...item, selected: !!isSelectAll })),
     );
     setIsSelectAll(!isSelectAll);
   };
@@ -100,8 +100,8 @@ function CartClient() {
                               prev.map((item) =>
                                 item.id === product.id
                                   ? { ...item, selected: !!checked }
-                                  : item
-                              )
+                                  : item,
+                              ),
                             )
                           }
                         />
@@ -170,7 +170,7 @@ function CartClient() {
                     item.selected
                       ? acc + item.option.price * item.quantity
                       : acc,
-                  0
+                  0,
                 )}
               </p>
             </div>
@@ -185,7 +185,7 @@ function CartClient() {
                     item.selected
                       ? acc + item.option.price * item.quantity
                       : acc,
-                  0
+                  0,
                 )}
               </p>
             </div>

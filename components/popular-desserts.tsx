@@ -39,7 +39,7 @@ const Desserts = [
 
 export function PopularDesserts() {
   return (
-    <section className="flex flex-col items-center font-dream p-16 gap-6">
+    <section className="flex flex-col items-center font-dream p-16 gap-6 bg-[#f8f7ea]">
       <h1 className="text-brand-orange md:text-3xl lg:text-3xl ">
         Popular Desserts
       </h1>

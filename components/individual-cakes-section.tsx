@@ -7,7 +7,7 @@ import CakeCarousel from "./individual-cakes-carouse";
 
 function IndividualCakes() {
   return (
-    <section className="flex flex-col items-center py-16 gap-6 w-full">
+    <section className="flex flex-col items-center py-16 gap-6 w-full bg-[#f8f7ea]">
       <h1 className="text-brand-orange font-dream md:text-3xl lg:text-3xl lg:py-7">
         Individual Cakes
       </h1>

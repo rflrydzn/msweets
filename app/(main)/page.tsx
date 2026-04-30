@@ -10,6 +10,7 @@ import WhyTrustUs from "@/components/why-trust-us";
 import Footer from "@/components/footer-section";
 import Banner from "@/components/banner";
 import ShopByCategory from "@/components/shop-by-category";
+import MotherDayFlowersSection from "@/components/featured";
 
 export default function Home() {
   return (
@@ -23,7 +24,8 @@ export default function Home() {
         <CarouselHero />
       </section>
 
-      <PopularDesserts />
+      {/* <PopularDesserts /> */}
+      <MotherDayFlowersSection />
       {/* <AllProducts /> */}
       <ShopByCategory />
       <IndividualCakes />
