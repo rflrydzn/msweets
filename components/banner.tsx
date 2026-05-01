@@ -10,7 +10,7 @@ export default function Banner() {
     <div className="fixed top-0 left-0 z-50 w-full bg-white px-6 py-1 shadow-md flex items-center justify-center">
       {/* Centered text */}
       <p className="text-sm sm:text-base font-medium text-brand-orange flex items-center gap-1">
-        Order online or text/call +63 9612722088 <Phone size={15} />
+        Order online or text/call +63 961 272 2088 <Phone size={15} />
       </p>
       {/* Absolute-positioned X */}
       <button

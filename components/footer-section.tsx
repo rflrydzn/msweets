@@ -105,7 +105,7 @@ function Footer() {
               <p>Purok 2 Barangay Macabling</p>
               <p>Santa Rosa, Laguna, Philippines</p>
               <p>Phone: +63 955 597 5368</p>
-              <p>Email: hello@example.com</p>
+              <p>Email: ms.gonzalespmb@gmail.com</p>
             </address>
           </div>
           <div className="relative">

@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import { Navbar01 } from "@/components/nav-bar";
 import QueryProvider from "@/components/query-provider"; // ✅ import
 import Footer from "@/components/footer-section";
+import { Toaster } from "sonner";
 
 // const dreamToBerich = localFont({
 //   src: "../public/fonts/DreamToBerich.ttf",
@@ -43,6 +44,7 @@ export default function RootLayout({
           <div className="bg-[#f8f7ea]">
             <Navbar01 />
             {children}
+            <Toaster />
             <Footer />
           </div>
         </QueryProvider>

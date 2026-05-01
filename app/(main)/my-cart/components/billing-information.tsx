@@ -52,7 +52,7 @@ export default function BillingInformation({
       if (!selectedProvince) return;
       try {
         const res = await fetch(
-          `https://psgc.cloud/api/v2/provinces/${selectedProvince}/cities-municipalities`
+          `https://psgc.cloud/api/v2/provinces/${selectedProvince}/cities-municipalities`,
         );
         const data = await res.json();
         setCities(data.data);
@@ -74,6 +74,7 @@ export default function BillingInformation({
         <div className="space-y-2">
           <Label>Name</Label>
           <Input
+            className="bg-white"
             type="text"
             value={billingInfo.name}
             onChange={(e) => onBillingChange({ name: e.target.value })}
@@ -82,6 +83,7 @@ export default function BillingInformation({
         <div className="space-y-2">
           <Label>E-Mail</Label>
           <Input
+            className="bg-white"
             type="email"
             value={billingInfo.email}
             onChange={(e) => onBillingChange({ email: e.target.value })}
@@ -90,6 +92,7 @@ export default function BillingInformation({
         <div className="space-y-2">
           <Label>Surname</Label>
           <Input
+            className="bg-white"
             type="text"
             value={billingInfo.surname}
             onChange={(e) => onBillingChange({ surname: e.target.value })}
@@ -98,6 +101,7 @@ export default function BillingInformation({
         <div className="space-y-2">
           <Label>Phone Number</Label>
           <Input
+            className="bg-white"
             type="tel"
             value={billingInfo.phoneNumber}
             onChange={(e) =>
@@ -118,7 +122,7 @@ export default function BillingInformation({
               onBillingChange({ province: value });
             }}
           >
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-[180px] bg-white">
               <SelectValue placeholder="Select a province" />
             </SelectTrigger>
             <SelectContent>
@@ -140,7 +144,7 @@ export default function BillingInformation({
             disabled={!cities || cities.length === 0}
             onValueChange={(value) => onBillingChange({ city: value })}
           >
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-[180px] bg-white">
               <SelectValue placeholder="Select a province" />
             </SelectTrigger>
             <SelectContent>
@@ -158,6 +162,7 @@ export default function BillingInformation({
         <div className="space-y-2">
           <Label>Address</Label>
           <Input
+            className="bg-white"
             type="text"
             value={billingInfo.address}
             onChange={(e) => onBillingChange({ address: e.target.value })}
@@ -215,6 +220,7 @@ export default function BillingInformation({
       <div className="my-6 space-y-3">
         <Label>Comment</Label>
         <Textarea
+          className="bg-white"
           placeholder="Type your message here."
           value={billingInfo.comment}
           onChange={(e) => onBillingChange({ comment: e.target.value })}
