@@ -3,7 +3,7 @@ import React from "react";
 
 export default function ArtisansSection() {
   return (
-    <section className="py-24 px-8 max-w-7xl mx-auto bg-[#fff8f8] font-sans">
+    <section className="py-24   mx-auto bg-[#fff8f8] font-sans">
       {/* Google Fonts */}
       <style jsx global>{`
         @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Dancing+Script:wght@400;700&display=swap");
