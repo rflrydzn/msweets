@@ -13,8 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { FlattenedProduct, ProductOptions } from "@/lib/types/types";
 import { Pencil, Plus, X } from "lucide-react";
-import { useState } from "react";
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import { useUpdateProduct } from "@/lib/hooks/useUpdateProduct";
 import { Textarea } from "./ui/textarea";
 import { toast } from "sonner";
@@ -34,27 +33,45 @@ export function EditItem({ product }: EditItemProps) {
     name: product.name,
     description: product.description ?? "",
     category: product.category,
-    options: product.options ?? { prices: [] },
+    options: product.options ?? { prices: [{ id: 1, label: "", price: 0 }] },
     productGallery: product.productGallery ?? [],
   });
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const [files, setFiles] = useState<File[]>([]);
-  const [preview, setPreview] = useState<string[]>(productInfo.productGallery);
   const [images, setImages] = useState<{ file?: File; preview: string }[]>(() =>
-    (productInfo.productGallery ?? []).map((url) => ({ preview: url }))
+    (productInfo.productGallery ?? []).map((url) => ({ preview: url })),
   );
   const { mutate: updateProduct, isError, error } = useUpdateProduct();
+
+  const addNewPriceField = () => {
+    setProductInfo((prev) => ({
+      ...prev,
+      options: {
+        ...prev.options,
+        prices: [
+          ...prev.options.prices,
+          { id: prev.options.prices.length + 1, label: "", price: 0 },
+        ],
+      },
+    }));
+  };
+
+  const removePriceField = (index: number) => {
+    setProductInfo((prev) => ({
+      ...prev,
+      options: {
+        ...prev.options,
+        prices: prev.options.prices.filter((_, i) => i !== index),
+      },
+    }));
+  };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
       setImages((prev) => [
         ...prev,
-        {
-          file: selectedFile,
-          preview: URL.createObjectURL(selectedFile),
-        },
+        { file: selectedFile, preview: URL.createObjectURL(selectedFile) },
       ]);
     }
   };
@@ -83,15 +100,17 @@ export function EditItem({ product }: EditItemProps) {
             <Pencil className="h-4 w-4" />
           </Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px] ">
-          <DialogHeader>
+        <DialogContent className="sm:max-w-[425px] flex flex-col max-h-[90vh]">
+          <DialogHeader className="flex-shrink-0">
             <DialogTitle>Edit {productInfo.name}</DialogTitle>
             <DialogDescription>
               Make changes to your product info here. Click save when
               you&apos;re done.
             </DialogDescription>
           </DialogHeader>
-          <div className="grid gap-4 overflow-y-auto ">
+
+          <div className="grid gap-4 overflow-y-auto flex-1 px-1">
+            {/* Name */}
             <div className="grid gap-3">
               <Label htmlFor="name">Name</Label>
               <Input
@@ -103,35 +122,37 @@ export function EditItem({ product }: EditItemProps) {
                 }
               />
             </div>
-            <div className="grid gap-3">
-              <Label htmlFor="price">Price</Label>
-              {productInfo.options?.prices?.map((e, i) => (
-                <div key={i} className="flex justify-center items-center gap-5">
-                  <div className="flex-col">
-                    <Label id="price-options-label">Label</Label>
 
+            {/* Price fields */}
+            <div className="grid gap-3">
+              <Label>Price</Label>
+              {productInfo.options?.prices?.map((entry, i) => (
+                <div key={entry.id ?? i} className="flex items-center gap-3">
+                  <div className="flex-col flex-1">
+                    <Label>Label</Label>
                     <Input
+                      value={productInfo.options.prices[i].label}
                       onChange={(e) =>
                         setProductInfo((prev) => ({
                           ...prev,
                           options: {
                             ...prev.options,
                             prices: prev.options.prices.map((p, idx) =>
-                              idx === i ? { ...p, label: e.target.value } : p
+                              idx === i ? { ...p, label: e.target.value } : p,
                             ),
                           },
                         }))
                       }
-                      value={productInfo.options.prices[i].label}
-                      id="price-options-label"
                     />
                   </div>
-                  <span className="flex items-center justify-center text-xl">
+                  <span className="flex items-center justify-center text-xl mt-4">
                     :
                   </span>
-                  <div className="flex-col">
-                    <Label id="price-options-price">Value</Label>
+                  <div className="flex-col flex-1">
+                    <Label>Value</Label>
                     <Input
+                      type="number"
+                      value={productInfo.options.prices[i].price}
                       onChange={(e) =>
                         setProductInfo((prev) => ({
                           ...prev,
@@ -140,18 +161,32 @@ export function EditItem({ product }: EditItemProps) {
                             prices: prev.options.prices.map((p, idx) =>
                               idx === i
                                 ? { ...p, price: Number(e.target.value) }
-                                : p
+                                : p,
                             ),
                           },
                         }))
                       }
-                      value={productInfo.options.prices[i].price}
-                      id="price-options-price"
                     />
                   </div>
+                  <button
+                    type="button"
+                    onClick={() => removePriceField(i)}
+                    className="mt-4 w-7 h-7 flex items-center justify-center rounded-full hover:bg-red-50 transition-colors flex-shrink-0"
+                  >
+                    <X className="w-4 h-4 text-red-500" />
+                  </button>
                 </div>
               ))}
+              <Button
+                type="button"
+                onClick={addNewPriceField}
+                variant="outline"
+              >
+                Add New Field
+              </Button>
             </div>
+
+            {/* Description */}
             <div className="grid gap-3">
               <Label>Description</Label>
               <Textarea
@@ -164,6 +199,8 @@ export function EditItem({ product }: EditItemProps) {
                 }
               />
             </div>
+
+            {/* Gallery */}
             <div className="grid gap-3">
               <Label>Product Gallery</Label>
               <div className="grid grid-cols-4 gap-3">
@@ -177,10 +214,11 @@ export function EditItem({ product }: EditItemProps) {
                       className="object-cover w-full h-full"
                     />
                     <button
-                      onClick={() => {
-                        setImages((prev) => prev.filter((_, i) => i !== index));
-                      }}
-                      className="absolute -top-0 -right-0 w-7 h-7 bg-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      type="button"
+                      onClick={() =>
+                        setImages((prev) => prev.filter((_, i) => i !== index))
+                      }
+                      className="absolute top-0 right-0 w-7 h-7 bg-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     >
                       <X className="w-4 h-4 text-brand-red" />
                     </button>
@@ -193,60 +231,17 @@ export function EditItem({ product }: EditItemProps) {
                   onChange={handleImageChange}
                 />
                 <Button
-                  onClick={() => {
-                    fileInputRef.current?.click();
-                  }}
+                  type="button"
+                  variant="outline"
+                  onClick={() => fileInputRef.current?.click()}
                 >
                   <Plus />
                 </Button>
               </div>
             </div>
-            {/* <div className="grid gap-3">
-              <Label htmlFor="price">Image</Label>
-              <img src={preview} className="aspect-square max-w-[50px]" />
-              <input
-                id="image"
-                type="file"
-                accept="image/*"
-                onChange={handleImageChange}
-                className="hidden"
-                ref={fileInputRef}
-              />
-              <Button
-                className="max-w-md"
-                variant="outline"
-                onClick={() => {
-                  fileInputRef.current?.click();
-                }}
-              >
-                Change Image
-                <ImageUp />
-              </Button>
-            </div> */}
-
-            {/* <div className="grid gap-3">
-              <Label htmlFor="price">Category</Label>
-              <Select>
-                <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="Select a category" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>Category</SelectLabel>
-                    {categories.map((category) => (
-                      <SelectItem
-                        key={category.id}
-                        value={category.id.toString()}
-                      >
-                        {category.name}
-                      </SelectItem>
-                    ))}
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-            </div> */}
           </div>
-          <DialogFooter>
+
+          <DialogFooter className="flex-shrink-0">
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>

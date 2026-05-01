@@ -23,6 +23,7 @@ import Image from "next/image";
 import Cart from "@/public/cart-icon.png";
 import { Search } from "lucide-react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 // Simple logo component for the navbar
 
@@ -81,8 +82,8 @@ export interface Navbar04Props extends React.HTMLAttributes<HTMLElement> {
 const defaultNavigationLinks: Navbar04NavItem[] = [
   { href: "/", label: "Home" },
   { href: "/all-products", label: "Shop" },
-  { href: "#", label: "About Us" },
-  { href: "#", label: "Contact" },
+  { href: "/#about", label: "About Us" },
+  { href: "/#footer", label: "Contact" },
 ];
 export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
   (
@@ -242,7 +243,6 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
                       <NavigationMenuItem key={index}>
                         <NavigationMenuLink
                           href={link.href}
-                          onClick={(e) => e.preventDefault()}
                           className={`${
                             pathname !== "/" ? "text-black" : "text-white"
                           } hover:text-primary py-1.5 font-medium transition-colors cursor-pointer group inline-flex h-10 w-max items-center justify-center rounded-md  px-4 text-sm  focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 2xl:text-2xl`}
@@ -294,15 +294,12 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
               >
                 <Search className="text-brand-red" />
               </button> */}
-              <button
+              <Link
+                href="/my-cart"
                 className="rounded-full bg-white text-sm font-medium p-2 shadow-sm "
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (onCartClick) onCartClick();
-                }}
               >
                 <Image src={Cart} alt="Cart Icon" width={24} />
-              </button>
+              </Link>
             </div>
           )}
         </div>
