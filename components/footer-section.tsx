@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import Logo from "@/public/msweets-logo.png";
 import Image from "next/image";
+import Link from "next/link";
 function Footer() {
   const [isDarkMode, setIsDarkMode] = React.useState(false);
   const [isChatOpen, setIsChatOpen] = React.useState(false);
@@ -117,37 +118,23 @@ function Footer() {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      className="rounded-full"
-                    >
-                      <Facebook className="h-4 w-4 text-black" />
-                      <span className="sr-only">Facebook</span>
-                    </Button>
+                    <Link href="https://www.facebook.com/profile.php?id=61552611526345">
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="rounded-full"
+                      >
+                        <Facebook className="h-4 w-4 text-black" />
+                        <span className="sr-only">Facebook</span>
+                      </Button>
+                    </Link>
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>Follow us on Facebook</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      className="rounded-full"
-                    >
-                      <Twitter className="h-4 w-4 text-black" />
-                      <span className="sr-only">Twitter</span>
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Follow us on Twitter</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
@@ -162,23 +149,6 @@ function Footer() {
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>Follow us on Instagram</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      className="rounded-full"
-                    >
-                      <Linkedin className="h-4 w-4 text-black" />
-                      <span className="sr-only">LinkedIn</span>
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Connect with us on LinkedIn</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>

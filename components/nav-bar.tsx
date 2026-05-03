@@ -90,7 +90,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
     {
       className,
       logo = Logo,
-      logoHref = "#",
+      logoHref = "/",
       navigationLinks = defaultNavigationLinks,
       signInText = "Login/Sign Up",
       signInHref = "#signin",
@@ -225,8 +225,8 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
             )}
             {/* Main nav */}
             <div className="flex flex-1 items-center gap-6 max-md:justify-between">
-              <button
-                onClick={(e) => e.preventDefault()}
+              <Link
+                href="/"
                 className="hidden  md:flex items-center space-x-2 text-primary hover:text-primary/90 transition-colors cursor-pointer"
               >
                 <Image
@@ -234,7 +234,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar04Props>(
                   alt="logo"
                   className="w-10 md:w-20 lg:w-20 2xl:w-25"
                 />
-              </button>
+              </Link>
               {/* Navigation menu */}
               {!isMobile && (
                 <NavigationMenu className="flex">

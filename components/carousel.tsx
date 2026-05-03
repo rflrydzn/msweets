@@ -13,7 +13,9 @@ import { Button } from "./ui/button";
 import { ChevronLeft, ChevronLeftCircle, ChevronRight } from "lucide-react";
 import Donut from "@/public/cpcake.png";
 import Cookie from "@/public/cake.png";
+import Cookies from "@/public/cookie.png";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const responsive = {
   superLargeDesktop: {
@@ -63,31 +65,17 @@ const slides = [
   },
   {
     title: "Taste the sweetness",
-    subtitle: "of Cookies",
+    subtitle: "of Cakes",
     description:
-      "Cookies come in all sorts of shapes! You've got the classic round shape, chocolate chip cookies, sandwich cookies, bars, and so much more.",
+      "Cakes come in all sorts of shapes! You’ve got the classic round cakes, layered cakes, cupcakes, sheet cakes, and so much more.",
     image: Cookie,
   },
   {
-    title: "Taste the sweetness2",
+    title: "Taste the joy",
     subtitle: "of Cookies",
     description:
       "Cookies come in all sorts of shapes! You've got the classic round shape, chocolate chip cookies, sandwich cookies, bars, and so much more.",
-    image: Cookie,
-  },
-  {
-    title: "Taste the sweetness3",
-    subtitle: "of Cookies",
-    description:
-      "Cookies come in all sorts of shapes! You've got the classic round shape, chocolate chip cookies, sandwich cookies, bars, and so much more.",
-    image: Cookie,
-  },
-  {
-    title: "Taste the sweetness4",
-    subtitle: "of Cookies",
-    description:
-      "Cookies come in all sorts of shapes! You've got the classic round shape, chocolate chip cookies, sandwich cookies, bars, and so much more.",
-    image: Cookie,
+    image: Cookies,
   },
 ];
 export function CarouselHero() {
@@ -118,17 +106,19 @@ export function CarouselHero() {
             <p className="text-white text-md lg:max-w-xl xl:text-2xl 2xl:text-3xl 2xl:max-w-3xl">
               {slide.description}
             </p>
-            <Button
-              className="
+            <Link href="/all-products">
+              <Button
+                className="
     text-white bg-brand-red font-medium
     h-[56px] w-[180px] text-base
     sm:h-[64px] sm:w-[200px] sm:text-lg
     md:h-[71px] md:w-[245px] md:text-xl
     mx-auto lg:mx-0
   "
-            >
-              Order now
-            </Button>
+              >
+                Order now
+              </Button>
+            </Link>
           </div>
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
