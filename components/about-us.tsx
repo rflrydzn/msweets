@@ -36,7 +36,7 @@ export default function ArtisansSection() {
 
             {/* Image */}
             <img
-              src="https://scontent-iad3-2.xx.fbcdn.net/v/t39.30808-6/587321485_3411496105664048_4383689156689024096_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=-vDYg1DEIs0Q7kNvwHNZMUV&_nc_oc=AdqXvC1gVCSeWSNDnOM0QWzT3D0OEzYDGzalWAZ4g6MEwGqRQYdEUGGUgSYrXRJvpLk&_nc_zt=23&_nc_ht=scontent-iad3-2.xx&_nc_gid=vY1NnlmdkZzoo258n4S7Sg&_nc_ss=7b2a8&oh=00_Af3mhwRskRQli1hASjbxc-zQ8B3yZX393dQMiE8CnFR_bA&oe=69F9A696"
+              src="https://scontent-iad3-2.xx.fbcdn.net/v/t39.30808-6/587321485_3411496105664048_4383689156689024096_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_ohc=fqxqEKkNwEsQ7kNvwG_xUPt&_nc_oc=Adpx7R2H8VPBEh0wfHCX-Z0LpTiQmJWElAvMqe30yWrAiVM5H_nRJbT7PBPPAfODBlc&_nc_zt=23&_nc_ht=scontent-iad3-2.xx&_nc_gid=Tww3kU30CH59HdF18MAn4w&_nc_ss=7b2a8&oh=00_Af4mpDdZwB-0p4R9cVO0qZCVPHtlJfSY8tZaSOcPR8k1JQ&oe=6A0ACA16"
               alt="Clara Beaumont"
               className="relative w-full h-full object-cover rounded-full border-4 border-[#fff8f8] shadow-md"
             />
