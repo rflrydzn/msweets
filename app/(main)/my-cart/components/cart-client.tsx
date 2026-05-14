@@ -9,7 +9,7 @@ import { BillingInfo, CartItem } from "@/lib/types/types";
 import BillingInformation from "./billing-information";
 
 function CartClient() {
-  const { cart, isHydrated } = useCart();
+  const { cart, isHydrated, removeFromCart } = useCart();
   const [isSelectAll, setIsSelectAll] = useState(true);
   const [selectedCart, setSelectedCart] = useState<CartItem[]>(cart);
 
@@ -97,37 +97,46 @@ function CartClient() {
                         src={product.image_url}
                         className="w-24 rounded-lg"
                       />
+
                       <div>
                         <h2 className="font-bold">{product.name}</h2>
                         <span className="text-brand-gray">
                           {product.option.label}
                         </span>
+
                         <QuantitySelector
                           className="text-brand-gray"
                           size="sm"
                         />
+                        <button
+                          onClick={() => removeFromCart(product.id)}
+                          className="text-red-500 text-sm font-medium hover:underline"
+                        >
+                          Remove
+                        </button>
                       </div>
                     </div>
-                    <div className="flex gap-3">
+
+                    <div className="flex gap-3 items-start">
                       <p className="font-bold text-xl">
                         ₱{product.option.price * product.quantity}
                       </p>
-                      <span>
-                        <Checkbox
-                          checked={product.selected}
-                          onCheckedChange={(checked) =>
-                            setSelectedCart((prev) =>
-                              prev.map((item) =>
-                                item.id === product.id
-                                  ? { ...item, selected: !!checked }
-                                  : item,
-                              ),
-                            )
-                          }
-                        />
-                      </span>
+
+                      <Checkbox
+                        checked={product.selected}
+                        onCheckedChange={(checked) =>
+                          setSelectedCart((prev) =>
+                            prev.map((item) =>
+                              item.id === product.id
+                                ? { ...item, selected: !!checked }
+                                : item,
+                            ),
+                          )
+                        }
+                      />
                     </div>
                   </div>
+
                   <Separator className="my-3" />
                 </div>
               ))}

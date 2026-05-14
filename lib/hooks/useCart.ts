@@ -18,11 +18,15 @@ export function useCart() {
         return prev.map((p) =>
           p.id === CartItem.id
             ? { ...p, quantity: p.quantity + CartItem.quantity }
-            : p
+            : p,
         );
       }
       return [...prev, CartItem];
     });
+  };
+
+  const removeFromCart = (id: string | number) => {
+    setCart((prev) => prev.filter((item) => item.id !== id));
   };
 
   useEffect(() => {
@@ -39,5 +43,5 @@ export function useCart() {
     }
   }, [cart, isHydrated]);
 
-  return { cart, addToCart, isHydrated };
+  return { cart, addToCart, isHydrated, removeFromCart };
 }

@@ -19,7 +19,7 @@ export default function VariantSelector_Basic_Ex_04({
   productInfo: ProductInfo;
 }) {
   const [quantity, setQuantity] = useState(1);
-  const [selectedOptionIndex, setSelectedOptionIndex] = useState("1");
+  const [selectedOptionIndex, setSelectedOptionIndex] = useState("0");
 
   const totalPrice =
     options.prices[Number(selectedOptionIndex)].price * quantity;
